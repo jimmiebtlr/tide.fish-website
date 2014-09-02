@@ -1,0 +1,15 @@
+<template name="bookingForm">
+  <div class="panel">
+    {{#autoForm collection="Bookings" id="bookingForm" doc=editDoc type=mode}}
+      <fieldset>
+      <div class="row">
+        <legend>{{modeLabel}} Booking</legend>
+        {{> afQuickField name='date'}}
+        {{> afQuickField id="notes" name='notes' rows=6}}
+        {{> afQuickField name='tripLengthId' options=tripLengthOptions}}
+        <button type="submit" class="btn btn-primary">{{mode}}</button>
+      </div>
+      </fieldset>
+    {{/autoForm}}
+  </div>
+</template>

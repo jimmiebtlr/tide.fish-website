@@ -1,0 +1,30 @@
+<template name="profile">
+  {{>boatProfile}}
+</template>
+
+<template name="boatProfile">
+    {{#autoForm collection="Boats" id="boatProfile" doc=editDoc type="update"}}
+      <fieldset>
+        <div class="row">
+          <legend>{{modeLabel}} </legend>
+          {{> afQuickField name='name' required="true"}}
+          {{> afQuickField name='capacity'}}
+          <b>Users allowed to book</b><br>
+          {{#each allowedUsers}}
+            <div id="{{userId}}">
+              {{email}}
+              <button class="btn btn-default removeAllowedUser btn-xs align-right">Remove</button><br>
+            </div>
+          {{/each}}
+          {{#each toBeAdded}}
+            <div id="{{userId}}">
+              {{email}}
+              <button class="btn btn-default removeToBeAdded btn-xs align-right">Remove</button><br>
+            </div>
+          {{/each}}
+          <input id="addAllowedBookingUser" class="form-control" type="email"/>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </fieldset>
+    {{/autoForm}}
+</template>

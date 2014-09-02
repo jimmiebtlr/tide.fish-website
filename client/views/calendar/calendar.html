@@ -1,0 +1,48 @@
+<template name="calendar">
+  <div class="col-md-8">
+    <div id="calendar" class="Clear calendar">
+    </div>
+  </div>
+  <div class="col-md-4">
+    {{> schedule}}
+  </div>
+</template>
+
+<template name="schedule">
+    <legend><h1>{{dateString}}</h1></legend>
+    {{#each boatData}}
+      <div id="boat-{{_id}}" class="content boat-schedule">
+        {{#if ambiguousBoat}}
+          <legend>{{name}}
+            {{#if dateFuture}} 
+              <button type="button" class="btn btn-default new-btn btn-xs pull-right">New</button>
+            {{/if}}
+          </legend>
+        {{/if}}
+        {{#if hasBookings}}
+          {{#each bookings}}
+            <h4>{{tripLength}}
+              {{#if dateFuture}} 
+                <div class="btn-group pull-right">
+                  <button id="edit-{{_id}}" type="button" class="btn btn-default edit-btn btn-xs">Edit</button>
+                  <button id="delete-{{_id}}" type="button" class="btn btn-danger delete-btn btn-xs">Cancel</button>
+                </div>
+              {{/if}}
+            </h4>
+            {{notes}}
+          {{/each}}
+        {{else}}
+          None scheduled
+        {{/if}}
+        {{#if bookingForm}}
+          {{>calBookingForm}}
+        {{/if}}
+      </div>
+    {{/each}}
+    {{#if ambiguousBoat}}
+    {{else}}
+      {{#if dateFuture}}
+        {{> bookingFormBrief}}
+      {{/if}}
+    {{/if}}
+</template>

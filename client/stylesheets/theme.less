@@ -1,0 +1,103 @@
+@import url(http://fonts.googleapis.com/css?family=Muli:300,400);
+
+@font-family-sans-serif: "Muli", Helvetica, Arial, sans-serif;
+@headings-font-family: "Muli", Helvertica, Arial, sans-serif;
+@headings-font-weight: 400;
+@color: #fff;
+@background: transparent;
+@border: #fff;
+@nav-height: 50px;
+
+@light-color: #EDF3F7;  
+
+html {
+  background-image: url('https://fish-booking-core.s3-us-west-2.amazonaws.com/background.jpg');
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+
+body {
+  background: transparent;
+  margin-top: @nav-height;
+}
+
+h3 {
+  margin-top: 0px;
+}
+
+.calendar {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.panel {
+  padding: 20px;
+  background-color: @light-color; 
+}
+
+/*
+ * BoatProfile
+ */
+#boatProfile{
+  margin: 20px;
+}
+
+/*
+ * Home page
+ */
+.featurette-divider {
+  border-color: #999;
+}
+
+.marketing-img{
+  max-width: 100%;
+}
+
+.landing-text{
+  margin-top: 75px; 
+  text-align: right;
+}
+
+#sign-up{
+  input{
+    margin: 5px;
+  }
+}
+
+/*
+ * Calendar
+ */
+.fc-day{
+  background: #fff;
+}
+
+/*
+ * Schedule
+ */
+.boat-schedule{
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+/*
+ * Notifications
+ */
+ul.notifications {
+  position: relative;
+  width: 100%;
+}
+
+li.notification {
+  & div.title {
+    margin-bottom: 0px;
+  }
+  & div.closeButton {
+    top: 5px;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "packages": {
+    "iron-router": {},
+    "accounts-entry": {},
+    "simple-schema": {},
+    "collection2": {},
+    "autoform": {},
+    "fullcalendar": {},
+    "collection-hooks": {},
+    "velocity-html-reporter": {},
+    "mocha-web-velocity": {},
+    "less-bootstrap-3": {},
+    "font-awesome-4-less": {},
+    "bootstrap3-wysihtml5": {},
+    "notifications": {}
+  }
+}
