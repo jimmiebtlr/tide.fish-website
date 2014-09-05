@@ -1,3 +1,7 @@
+Template.home.created = function(){
+  GAnalytics.pageview();
+}
+
 var validatePassword = function(password){
   msg = "";
   if( password.length < 7 ){
