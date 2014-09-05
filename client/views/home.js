@@ -58,7 +58,10 @@ Template.signUpForm.events({
         password: $('#password').val()
       });
       Meteor.loginWithPassword($('#email').val(), $('#password').val());
+      GAnalytics.event("account","home-signUp-Success");
       Router.go('/calendar');
+    }else{
+      GAnalytics.event("account","home-signUp-Failed");
     }
   }
 });

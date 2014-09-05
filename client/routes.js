@@ -10,7 +10,6 @@ Router.map(function() {
     path: '/',
     template: 'home',
     onAfterAction: function() {
-      console.log( "Here" );
       SEO.set({
         title: "Tide.Fish - Cloud Booking for Charter Fishing",
         meta: {
@@ -21,6 +20,7 @@ Router.map(function() {
           'description': "Tide.Fish - Cloud Booking for Charter Fishing"
         }
       });
+      GAnalytics.pageview("/");
     }
   });
   this.route('calendar', {
@@ -28,6 +28,9 @@ Router.map(function() {
     template: 'calendar',
     waitOn: function(){
       return [Meteor.subscribe('Boats'),Meteor.subscribe('Bookings'),Meteor.subscribe('TripLengths')];
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/calendar");
     }
   });
   this.route('newBooking', {
@@ -42,6 +45,9 @@ Router.map(function() {
     template: 'profile',
     waitOn: function(){
       return [Meteor.subscribe('Boats')];
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/profile");
     }
   });
 }); 

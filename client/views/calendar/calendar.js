@@ -20,6 +20,7 @@ Template.calendar.rendered = function(){
       Session.set("schedule-editBoat",undefined);
       $('#calendar').fullCalendar('gotoDate',date);
       $('#calendar').fullCalendar('select',date);
+      GAnalytics.event("calendar","selected-date-changed");
     }
   });
   $('#calendar').fullCalendar('select', new Date( Session.get('calDate')));
