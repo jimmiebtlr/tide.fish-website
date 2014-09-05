@@ -8,7 +8,20 @@ Router.onBeforeAction('loading');
 Router.map(function() {
   this.route('home', {
     path: '/',
-    template: 'home'
+    template: 'home',
+    onAfterAction: function() {
+      console.log( "Here" );
+      SEO.set({
+        title: "Tide.Fish - Cloud Booking for Charter Fishing",
+        meta: {
+          'description':"Tide.Fish - Cloud Booking for Charter Fishing"
+        },
+        og: {
+          'title': "Tide.Fish - Cloud Booking for Charter Fishing",
+          'description': "Tide.Fish - Cloud Booking for Charter Fishing"
+        }
+      });
+    }
   });
   this.route('calendar', {
     path: '/calendar',

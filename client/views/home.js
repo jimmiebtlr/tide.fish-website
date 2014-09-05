@@ -52,7 +52,7 @@ Template.signUpForm.events({
     Session.set("emailErrors", emailErrors);
     var passwordErrors = validatePassword( $('#password').val() );
     Session.set("passwordErrors", passwordErrors);
-    if( !emailErrors || !passwordErrors ){
+    if( !emailErrors && !passwordErrors ){
       Accounts.createUser({
         email: $('#email').val(),
         password: $('#password').val()
