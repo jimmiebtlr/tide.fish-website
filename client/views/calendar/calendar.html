@@ -29,7 +29,7 @@
                 </div>
               {{/if}}
             </h4>
-            {{notes}}
+            {{{notes}}}
           {{/each}}
         {{else}}
           None scheduled
@@ -42,7 +42,7 @@
     {{#if ambiguousBoat}}
     {{else}}
       {{#if dateFuture}}
-        {{> bookingFormBrief}}
+        {{> calBookingForm}}
       {{/if}}
     {{/if}}
 </template>

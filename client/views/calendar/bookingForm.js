@@ -56,7 +56,11 @@ AutoForm.addHooks(['calBookingForm'],{
   before: {
     insert: function(doc, template) {
       var boat = Boats.findOne({'ownerId': Meteor.userId()});
-      doc.boatId = Session.get("schedule-editBoat");
+      if( Boats.ambiguous( Meteor.userId() ) ){
+        doc.boatId = Session.get("schedule-editBoat");
+      }else{
+        doc.boatId = Boats.related( Meteor.userId() ).fetch()[0]._id;
+      }
       doc.date = new Date(Session.get('calDate'));
       doc.ownerId = boat.ownerId;
       doc.external = true;
