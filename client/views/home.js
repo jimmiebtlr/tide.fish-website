@@ -53,13 +53,14 @@ Template.signUpForm.events({
     var passwordErrors = validatePassword( $('#password').val() );
     Session.set("passwordErrors", passwordErrors);
     if( !emailErrors && !passwordErrors ){
+      console.log( "creating account" );
       Accounts.createUser({
         email: $('#email').val(),
         password: $('#password').val()
       });
       Meteor.loginWithPassword($('#email').val(), $('#password').val());
-      GAnalytics.event("account","home-signUp-Success");
       Router.go('/calendar');
+      GAnalytics.event("account","home-signUp-Success");
     }else{
       GAnalytics.event("account","home-signUp-Failed");
     }
