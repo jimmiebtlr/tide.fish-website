@@ -21,7 +21,8 @@ Router.map(function() {
         }
       });
       GAnalytics.pageview("/");
-    }
+    },
+    cache: true
   });
   this.route('welcome', {
     path: 'welcome',
@@ -47,14 +48,17 @@ Router.map(function() {
     },
     onAfterAction: function(){
       GAnalytics.pageview("/calendar");
-    }
+    },
+    cache: 5,
+    expire: 10
   });
   this.route('newBooking', {
     path: '/bookings/new',
     template: 'bookingForm',
     waitOn: function(){
       return [Meteor.subscribe('Boats'),Meteor.subscribe('TripLengths')];
-    }
+    },
+    cache: true
   });
   this.route('profile', {
     path: '/profile',
@@ -64,6 +68,7 @@ Router.map(function() {
     },
     onAfterAction: function(){
       GAnalytics.pageview("/profile");
-    }
+    },
+    cache: true
   });
 }); 

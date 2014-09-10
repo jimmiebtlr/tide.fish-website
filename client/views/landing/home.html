@@ -1,27 +1,26 @@
 <template name="home">
-  <div class="panel">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="landing-text">
-          <h2>Cloud Booking for<br>Fishing Charters</h2>
-          <p>Simple, secure cloud booking<br>designed for charter fishing.</p>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
-        <img src="https://fish-booking-core.s3-us-west-2.amazonaws.com/A98DB973.png" class="marketing-img" alt="Fishing charter booking image">
-      </div>
+  <div class="jumbotron">
+    <h1>Start booking today.</h1>
+    <p class="lead">Free, Fast, Secure cloud booking for fishing charters.</p>
+    <p><a class="btn btn-lg btn-success" href="/sign-up" role="button">Sign Up Today</a></p>
+  </div>
+
+  <div class="row panel marketing">
+    <div class="col-lg-4">
+      <i class="glyphicon glyphicon-cloud text-center"></i>
+      <h2>Cloud</h2>
+      <p>Update your schedule from anywhere.  Allow others to view it.</p>
+      <p>Stored securely in the cloud through disasters.</p>
     </div>
-    {{#if currentUser}}
-    {{else}}
-      <hr class="featurette-divider">
-      <div class="container">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          {{> signUpForm}}
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-    {{/if}}
+    <div class="col-lg-4">
+      <i class="glyphicon glyphicon-calendar text-center"></i>
+      <h2>Simple</h2>
+      <p>No unneeded clutter, designed for fishing charters.  The features you need and nothing else.</p>
+   </div>
+    <div class="col-lg-4">
+      <i class="glyphicon glyphicon-search text-center"></i>
+      <h2>Coming Soon: SEO</h2>
+      <p>Let us find you new clients. Only clients that are interested in fishing on days that you are avaliable.</p>
+    </div>
   </div>
 </template>
