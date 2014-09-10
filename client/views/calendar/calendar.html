@@ -17,7 +17,7 @@
         {{#if ambiguousBoat}}
           <legend>{{name}}
             {{#if dateFuture}} 
-              <button type="button" class="btn btn-default new-btn btn-xs pull-right">New</button>
+              <button type="button" class="btn btn-default new-btn btn-xs pull-right"><i class="fa fa-edit"></i>&nbsp;New</button>
             {{/if}}
           </legend>
         {{/if}}
@@ -26,8 +26,8 @@
             <h4>{{tripLength}}
               {{#if dateFuture}} 
                 <div class="btn-group pull-right">
-                  <button id="edit-{{_id}}" type="button" class="btn btn-default edit-btn btn-xs">Edit</button>
-                  <button id="delete-{{_id}}" type="button" class="btn btn-danger delete-btn btn-xs">Cancel</button>
+                  <button id="edit-{{_id}}" type="button" class="btn btn-default edit-btn btn-xs"><i class="fa fa-edit"></i>&nbsp;Edit</button>
+                  <button id="delete-{{_id}}" type="button" class="btn btn-danger delete-btn btn-xs"><i class="fa fa-trash"></i>&nbsp;Cancel</button>
                 </div>
               {{/if}}
             </h4>

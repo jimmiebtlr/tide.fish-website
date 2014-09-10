@@ -6,7 +6,9 @@
         <h3>Update Booking</h3>
         {{> afQuickField name='notes' id="notes" rows=3 label=false placeholder="Notes"}}
         {{> afQuickField name='tripLengthId' options=tripLengthOptions}}
-        <button type="submit" class="btn btn-default">Save</button>
+        <button type="submit" class="btn btn-default">
+          <i class="fa fa-edit fa-fw"></i>&nbsp; Save
+        </button>
       </fieldset>
     {{/autoForm}}
   {{else}}
@@ -15,7 +17,9 @@
         <h3>Insert Booking</h3>
         {{> afQuickField name='notes' id="notes" rows=3 label=false placeholder="Notes"}}
         {{> afQuickField name='tripLengthId' options=tripLengthOptions}}
-        <button type="submit" class="btn btn-default">Save</button>
+        <button type="submit" class="btn btn-default">
+          <i class="fa fa-edit fa-fw"></i>&nbsp; Save
+        </button>
       </fieldset>
     {{/autoForm}}
   {{/if}}
