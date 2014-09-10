@@ -23,6 +23,22 @@ Router.map(function() {
       GAnalytics.pageview("/");
     }
   });
+  this.route('welcome', {
+    path: 'welcome',
+    onAfterAction: function() {
+      SEO.set({
+        title: "Tide.Fish - Cloud Booking for Charter Fishing",
+        meta: {
+          'description':"Tide.Fish - Cloud Booking for Charter Fishing"
+        },
+        og: {
+          'title': "Tide.Fish - Cloud Booking for Charter Fishing",
+          'description': "Tide.Fish - Cloud Booking for Charter Fishing"
+        }
+      });
+      GAnalytics.pageview("/");
+    }
+  });
   this.route('calendar', {
     path: '/calendar',
     template: 'calendar',

@@ -1,0 +1,27 @@
+<template name="home">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="landing-text">
+          <h2>Cloud Booking for<br>Fishing Charters</h2>
+          <p>Simple, secure cloud booking<br>designed for charter fishing.</p>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+        <img src="https://fish-booking-core.s3-us-west-2.amazonaws.com/A98DB973.png" class="marketing-img" alt="Fishing charter booking image">
+      </div>
+    </div>
+    {{#if currentUser}}
+    {{else}}
+      <hr class="featurette-divider">
+      <div class="container">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          {{> signUpForm}}
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    {{/if}}
+  </div>
+</template>

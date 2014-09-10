@@ -8,8 +8,10 @@
 </body>
 
 <template name="layout">
-  {{> nav}}
-  <div class="container panel">
+  {{#unless hideNav}}
+    {{> nav}}
+  {{/unless}}
+  <div class="container">
     {{> notifications}}
     {{>yield}}
   </div>
@@ -26,7 +28,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Tide.Fish</a>
+        <a class="navbar-brand" href="/"><img src="https://fish-booking-core.s3-us-west-2.amazonaws.com/tmp.jpg">Tide.Fish</a>
       </div>
       <div class="collapse navbar-collapse full-width">
         <ul class="nav navbar-nav">

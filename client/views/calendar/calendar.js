@@ -52,7 +52,7 @@ Template.schedule.boatData = function(){
       booking.tripLength = TripLengths.findOne(booking.tripLengthId).label; 
     });
     boat.bookings = bookings;
-    if( Session.get("schedule-editBoat") === boat._id ){
+    if( Session.get("schedule-editBoat") === boat._id && ambiguousBoat() ){
       boat.bookingForm = true;
     }
   });

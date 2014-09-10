@@ -1,0 +1,15 @@
+<template name="signUpForm">
+  {{#if hasErrors}}
+    <div class="alert alert-danger">  
+      {{errors}}
+    </div>
+  {{/if}}
+  <form id="sign-up">
+    <input id="email" placeholder="Email" class="form-control" type="email"/>
+    <div class="form-group hasError">
+      <input id="password" placeholder="Password" class="form-control" type="password"/>
+    </div>
+    <input id="submit" class="form-control btn btn-primary" type="submit" value="Start Now for Free">
+  </form>
+</template>
+
