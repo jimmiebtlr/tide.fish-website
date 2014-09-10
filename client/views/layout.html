@@ -16,6 +16,9 @@
     {{> notifications}}
     {{>yield}}
   </div>
+  {{#unless hideFooter}}
+    {{> footer}}
+  {{/unless}}
 </template>
 
 
@@ -48,5 +51,11 @@
         </ul>
       </div><!--/.nav-collapse -->
     </div>
+  </div>
+</template>
+
+<template name="footer">
+  <div class="footer">
+    Created by <a href="http://elevatedevdesign.com">Elevate Development and Design, LLC.</a>
   </div>
 </template>
