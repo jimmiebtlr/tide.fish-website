@@ -5,3 +5,8 @@ Template.layout.hideNav = function(){
 Template.layout.hideFooter = function(){
   return Session.get('hideFooter');
 }
+
+Template.footer.rendered = function(){ 
+  var footerHeight = $("#footer").innerHeight();
+  $("body").css("margin-bottom", footerHeight);
+}

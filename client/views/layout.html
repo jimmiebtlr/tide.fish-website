@@ -14,7 +14,7 @@
   {{/unless}}
   <div class="container">
     {{> notifications}}
-    {{>yield}}
+    {{> yield}}
   </div>
   {{#unless hideFooter}}
     {{> footer}}
@@ -55,7 +55,10 @@
 </template>
 
 <template name="footer">
-  <div class="footer">
-    Created by <a href="http://elevatedevdesign.com">Elevate Development and Design, LLC.</a>
+  <div id="footer" class="navbar navbar-inverse">
+    <div class="container">
+      <p>Created by <a href="http://elevatedevdesign.com">Elevate Development and Design, LLC.</a></p>
+      <p>Font Awesome by Dave Gandy - <a href="http://fontawesome.io">http://fontawesome.io</a></p>
+    </div>
   </div>
 </template>

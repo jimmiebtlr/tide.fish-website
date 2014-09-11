@@ -37,14 +37,14 @@
   "popovers":             false,
   "carousel":             false,
   
-  "affix":                false,
+  "affix":                true,
   "alert":                false,
   "button":               true,
-  "collapse":             false,
+  "collapse":             true,
   "scrollspy":            false,
   "tab":                  false,
   "transition":           false,
 
-  "utilities":            false,
+  "utilities":            true,
   "responsive-utilities": true
 }}

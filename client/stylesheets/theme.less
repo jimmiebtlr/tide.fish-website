@@ -18,12 +18,13 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 body {
   background: transparent;
-  margin-top: @nav-height;
+  padding-top: @nav-height;
 }
 
 h3 {
@@ -48,19 +49,30 @@ img{
   width: 40px;
 }
 
+.navbar-inverse{
+  color: @light-color;
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-brand
+{
+  color: @light-color;
+}
+
 /*
  * footer
  */
-.footer{
+#footer{
+  position: absolute;
+  bottom: 0;
   text-align: center;
   width: 100%;
-  background-color: black;
-  color: white;
-  margin: 0px;
   padding: 20px;
+  margin-bottom: 0px;
+  margin-top: 20px;
 }
 
-.footer a{
+#footer a{
   color: white;
 }
 
