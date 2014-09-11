@@ -1,4 +1,5 @@
 @import "custom.bootstrap.import.less";
+@import "responsive.less";
 @import url(http://fonts.googleapis.com/css?family=Muli:300,400);
 
 @font-family-sans-serif: "Muli", Helvetica, Arial, sans-serif;
@@ -24,7 +25,6 @@ html {
 
 body {
   background: transparent;
-  padding-top: @nav-height;
 }
 
 h3 {
@@ -106,34 +106,6 @@ img{
 }
 
 /*
- * Welcome page
- */
-.landing-content{
-  width: 800px;
-  background: rgba(0,0,0, .85);
-  margin-left: auto;
-  margin-right: auto;
-  color: white;
-  padding: 30px;
-  padding-bottom: 30px;
-}
-
-.landing-logo{
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.landing-logo img{
-  width: 200px;
-  height: 175px;
-}
-
-.landing-content h1{
-  margin: 15px;
-  margin-top: 30px;
-}
-
-/*
  * Calendar
  */
 .fc-day{
@@ -152,21 +124,4 @@ img{
 
 textarea#notes {
   min-height: 75px;
-}
-
-/*
- * Notifications
- */
-ul.notifications {
-  position: relative;
-  width: 100%;
-}
-
-li.notification {
-  & div.title {
-    margin-bottom: 0px;
-  }
-  & div.closeButton {
-    top: 5px;
-  }
 }
