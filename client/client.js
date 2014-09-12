@@ -36,6 +36,4 @@ Meteor.startup(function () {
   UI.registerHelper("isDisconnected", function(){
     return !Meteor.status().connected;
   });
-
-  Meteor.subscribe('TripLengths');
 });

@@ -1,3 +1,6 @@
+var permSubs = new SubsManager({cacheLimit: 9999, expireIn: 9999}); 
+var tmpSubs = new SubsManager({cacheLimit: 10, expireIn: 10}); 
+
 Router.configure({
   layoutTemplate: 'layout',
   loadingTemplate: 'loading',
@@ -21,8 +24,7 @@ Router.map(function() {
         }
       });
       GAnalytics.pageview("/");
-    },
-    cache: true
+    }
   });
   this.route('welcome', {
     path: 'welcome',
@@ -44,13 +46,11 @@ Router.map(function() {
     path: '/calendar',
     template: 'calendar',
     waitOn: function(){
-      return [Meteor.subscribe('Boats'),Meteor.subscribe('Bookings')];
+      return [permSubs.subscribe('TripLengths'),permSubs.subscribe('RelatedBoats'),tmpSubs.subscribe('Bookings')];
     },
     onAfterAction: function(){
       GAnalytics.pageview("/calendar");
-    },
-    cache: 5,
-    expire: 10
+    }
   });
   this.route('newBooking', {
     path: '/bookings/new',
@@ -64,7 +64,7 @@ Router.map(function() {
     path: '/profile',
     template: 'profile',
     waitOn: function(){
-      return [Meteor.subscribe('Boats')];
+      return [permSubs.subscribe('RelatedBoats'),permSubs.subscribe('TripLengths')];
     },
     onAfterAction: function(){
       GAnalytics.pageview("/profile");

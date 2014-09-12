@@ -2,7 +2,7 @@ Meteor.publish('TripLengths', function(){
   return TripLengths.find({});
 });
 
-Meteor.publish('Boats', function(){
+Meteor.publish('RelatedBoats', function(){
   if( this.userId ){
     return Boats.related( this.userId );
   }else{
