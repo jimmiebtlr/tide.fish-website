@@ -6,7 +6,7 @@ var ambiguousBoat = function(){
 }
 
 Template.calendar.created = function(){
-  if( Session.get('calDate') == null ){
+  if( Session.get('calDate') === null ){
     Session.set('calDate',moment().format("MM/DD/YYYY"));
   }
 }
@@ -21,7 +21,12 @@ Template.calendar.rendered = function(){
       $('#calendar').fullCalendar('gotoDate',date);
       $('#calendar').fullCalendar('select',date);
       GAnalytics.event("calendar","selected-date-changed");
-    }
+    },
+    header: {
+      left:   '',
+      center: '',
+      right:  'today prev,next'
+    } 
   });
   $('#calendar').fullCalendar('select', new Date( Session.get('calDate')));
 }
