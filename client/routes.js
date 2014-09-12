@@ -1,5 +1,9 @@
 var permSubs = new SubsManager({cacheLimit: 9999, expireIn: 9999}); 
-var tmpSubs = new SubsManager({cacheLimit: 10, expireIn: 10}); 
+var tmpSubs = new SubsManager({cacheLimit: 5, expireIn: 3}); 
+
+IronRouterProgress.configure({
+    delay : 100
+});
 
 Router.configure({
   layoutTemplate: 'layout',
