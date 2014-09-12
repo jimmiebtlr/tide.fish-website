@@ -1,6 +1,6 @@
 Router.configure({
   layoutTemplate: 'layout',
-  loadingTemplate: 'home',
+  loadingTemplate: 'loading',
 });
 
 Router.onBeforeAction('loading');
@@ -70,8 +70,5 @@ Router.map(function() {
       GAnalytics.pageview("/profile");
     },
     cache: true
-  });
-  this.route('contact_us', {
-    path: '/contact_us'
   });
 }); 

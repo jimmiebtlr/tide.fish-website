@@ -1,8 +1,6 @@
 Meteor.startup(function () {
 });
 
-process.env.MAIL_URL=
-
 Meteor.methods({
   'addAllowedUser': function(boatId, emails){
     check( boatId, String );
@@ -24,21 +22,18 @@ Meteor.methods({
     });
     return resp;
   },
-  'sendEmail': function( formVals ){ 
-    console.log( Meteor.user() );
+  'sendEmail': function( formVals ){
+    check( formVals, contactUsSchema );
+    
     if( Meteor.user() !== undefined ){
-      check( formVals, {subject: String, details: String} );
-      console.log( Meteor.user() );
-      formVals.email = Meteor.user().emails[0];
-    }else{
-      check( formVals, {name: String, email: String, subject: String, details: String} );
+      formVals.email = Meteor.user().emails[0].address;
     }
     
     Email.send({
       to: "support@elevatedevdesign.com",
       from: formVals.email,
       subject: "Tide.Fish - " + formVals.subject,
-      text: "Name: " + formVals.name + "<br>" + formVals.details
+      text: "Name: " + formVals.name + "\n\r" + "Id: " + Meteor.userId() + "\n\r" + formVals.details
     });
   }
 });

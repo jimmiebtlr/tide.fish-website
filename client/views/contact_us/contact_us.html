@@ -8,11 +8,11 @@
     <div class="row">
       {{#autoForm schema=contactFormSchema id="contactForm" type="method" meteormethod="sendEmail"}}
         <fieldset>
-          {{#unless currentUser}}
-            {{> afQuickField name="name" template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
-            {{> afQuickField name="email" template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
-          {{/unless}}
-          {{> afQuickField name="subject" options="allowed" template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
+          {{#if subject}}
+            {{> afQuickField name="subject" value=subject options="allowed" template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
+          {{else}}
+            {{> afQuickField name="subject" options="allowed" template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
+          {{/if}}
           {{> afQuickField name="details" rows=10 template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
           <div class="col-sm-10 col-sm-offset-2">
             <button type="submit" class="btn btn-primary">Submit</button>
