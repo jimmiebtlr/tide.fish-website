@@ -13,7 +13,7 @@
 <template name="schedule">
     <legend><h1>{{dateString}}</h1></legend>
     {{#each boatData}}
-      <div id="boat-{{_id}}" class="content boat-schedule">
+      <div id="boat-{{_id}}" class="well">
         {{#if ambiguousBoat}}
           <legend>{{name}}
             {{#if dateFuture}} 

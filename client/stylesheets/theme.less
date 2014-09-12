@@ -1,5 +1,7 @@
+@import "custom.bootstrap.less";
 @import "custom.bootstrap.import.less";
 @import "responsive.less";
+
 @import url(http://fonts.googleapis.com/css?family=Muli:300,400);
 
 @font-family-sans-serif: "Muli", Helvetica, Arial, sans-serif;
@@ -44,15 +46,7 @@ h3 {
 /*
  * Nav
  */
-img{
-  height: 40px;
-  width: 40px;
-}
-
-.navbar-inverse{
-  color: @light-color;
-}
-
+.navbar-inverse,
 .navbar-inverse .navbar-nav > li > a,
 .navbar-inverse .navbar-brand
 {
@@ -115,13 +109,6 @@ img{
 /*
  * Schedule
  */
-.boat-schedule{
-  margin-bottom: 15px;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 10px;
-}
-
 textarea#notes {
   min-height: 75px;
 }
