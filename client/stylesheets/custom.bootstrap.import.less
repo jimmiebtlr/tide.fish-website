@@ -15,8 +15,11 @@
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
-
-@light-color: #EDF3F7;  
+@blue-dark:   #003173; 
+@blue:        lighten(@blue-dark, 33.5%);
+@blue-light:  lighten(@blue-dark, 46.5%);  
+@blue-lighter:  lighten(@blue-dark, 90.5%);  
+@light-color: lighten(@blue-dark, 93.5%);  
 
 @gray-darker:            lighten(#000, 13.5%); // #222
 @gray-dark:              lighten(#000, 20%);   // #333
