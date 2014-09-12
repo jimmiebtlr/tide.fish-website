@@ -71,4 +71,7 @@ Router.map(function() {
     },
     cache: true
   });
+  this.route('contact_us', {
+    path: '/contact_us'
+  });
 }); 
