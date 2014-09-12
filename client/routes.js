@@ -44,7 +44,7 @@ Router.map(function() {
     path: '/calendar',
     template: 'calendar',
     waitOn: function(){
-      return [Meteor.subscribe('Boats'),Meteor.subscribe('Bookings'),Meteor.subscribe('TripLengths')];
+      return [Meteor.subscribe('Boats'),Meteor.subscribe('Bookings')];
     },
     onAfterAction: function(){
       GAnalytics.pageview("/calendar");
@@ -56,7 +56,7 @@ Router.map(function() {
     path: '/bookings/new',
     template: 'bookingForm',
     waitOn: function(){
-      return [Meteor.subscribe('Boats'),Meteor.subscribe('TripLengths')];
+      return [Meteor.subscribe('Boats')];
     },
     cache: true
   });

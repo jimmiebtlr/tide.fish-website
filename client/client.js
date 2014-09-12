@@ -32,4 +32,6 @@ Meteor.startup(function () {
     });
     return options;
   });
+
+  Meteor.subscribe('TripLengths');
 });

@@ -21,12 +21,7 @@ Template.calendar.rendered = function(){
       $('#calendar').fullCalendar('gotoDate',date);
       $('#calendar').fullCalendar('select',date);
       GAnalytics.event("calendar","selected-date-changed");
-    },
-    header: {
-      left:   '',
-      center: '',
-      right:  'today prev,next'
-    } 
+    }
   });
   $('#calendar').fullCalendar('select', new Date( Session.get('calDate')));
 }
