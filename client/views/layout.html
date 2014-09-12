@@ -12,10 +12,16 @@
   {{#unless hideNav}}
     {{> nav}}
   {{/unless}}
-  <div class="container">
-    {{> notifications}}
-    {{> yield}}
-  </div>
+
+  {{#unless isDisconnected}}
+    <div class="container">
+      {{> notifications}}
+      {{> yield}}
+    </div>
+  {{else}}
+    {{> disconnected}}
+  {{/unless}}
+
   {{#unless hideFooter}}
     {{> footer}}
   {{/unless}}
@@ -34,22 +40,24 @@
         </button>
         <a class="navbar-brand" href="/">Tide.Fish</a>
       </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          {{#if currentUser}}
-            <li><a href="/calendar">Calendar</a></li>
-            <li><a href="/profile">Profile</a></li>
-          {{/if}}
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          {{#if currentUser}}
-            <li><a href="/sign-out">Sign Out</a></li>
-          {{else}}
-            <li><a href="/sign-in">Sign In</a></li>
-            <li><a href="/sign-up">Sign Up</a></li>
-          {{/if}}
-        </ul>
-      </div><!--/.nav-collapse -->
+      {{#unless isDisconnected}}
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            {{#if currentUser}}
+              <li><a href="/calendar">Calendar</a></li>
+              <li><a href="/profile">Profile</a></li>
+            {{/if}}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {{#if currentUser}}
+              <li><a href="/sign-out">Sign Out</a></li>
+            {{else}}
+              <li><a href="/sign-in">Sign In</a></li>
+              <li><a href="/sign-up">Sign Up</a></li>
+            {{/if}}
+          </ul>
+        </div><!--/.nav-collapse -->
+      {{/unless}}
     </div>
   </div>
 </template>
@@ -60,6 +68,16 @@
       <a href='{{pathFor "contact_us"}}'>Contact Us</a><br>
       Created by <a href="http://elevatedevdesign.com">Elevate Development and Design, LLC.</a><br>
       Font Awesome by Dave Gandy - <a href="http://fontawesome.io">http://fontawesome.io</a>
+    </div>
+  </div>
+</template>
+
+<template name="disconnected">
+  <div id="disconnected" class="container panel">
+    <div class="alert alert-danger text-center">
+      <i class="fa fa-anchor fa-5x text-center"></i><br>
+      <h1>You are not currently connected to this site.</h1>
+      <h1>Please check your internet access and reconnect.</h1>
     </div>
   </div>
 </template>

@@ -32,6 +32,10 @@ Meteor.startup(function () {
     });
     return options;
   });
+  
+  UI.registerHelper("isDisconnected", function(){
+    return !Meteor.status().connected;
+  });
 
   Meteor.subscribe('TripLengths');
 });
