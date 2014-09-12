@@ -37,9 +37,19 @@ Template.contact_us.destroyed = function(){
 AutoForm.addHooks(['contactForm'],{
   before: {
     "sendEmail": function(doc, template) {
-      doc.email = Meteor.user().emails[0].address;
-      console.log( doc );
+      if( Meteor.user() !== null ){
+        doc.email = Meteor.user().emails[0].address;
+      }
       return doc;
+    }
+  },
+  after: {
+    "sendEmail": function(){
+      if( Meteor.userId() !== null ){
+        Router.go('calendar');
+      }else{
+        Router.go('home');
+      }
     }
   }
 });

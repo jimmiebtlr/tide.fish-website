@@ -25,7 +25,7 @@ Meteor.methods({
   'sendEmail': function( formVals ){
     check( formVals, contactUsSchema );
     
-    if( Meteor.user() !== undefined ){
+    if( Meteor.user() !== null ){
       formVals.email = Meteor.user().emails[0].address;
     }
     
