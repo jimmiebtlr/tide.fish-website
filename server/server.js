@@ -13,7 +13,7 @@ Meteor.methods({
     if( !boat || boat.ownerId !== Meteor.userId() ){ console.log( "user boat mismatch"); return; }
    
     _.each(emails, function(email){
-      var user = Meteor.users.findOne({'emails.address': email });
+      var user = Meteor.users.findOne({'registered_emails.address': email });
       if( !user ){ 
         resp.errors.push(email);
       }else{
