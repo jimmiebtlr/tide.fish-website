@@ -52,6 +52,9 @@ Router.map(function() {
     waitOn: function(){
       return [permSubs.subscribe('TripLengths'),permSubs.subscribe('RelatedBoats'),tmpSubs.subscribe('Bookings')];
     },
+    onBeforenAction: function(){
+      AccountsEntry.signInRequired(this);
+    },
     onAfterAction: function(){
       GAnalytics.pageview("/calendar");
     }
@@ -69,6 +72,9 @@ Router.map(function() {
     template: 'profile',
     waitOn: function(){
       return [permSubs.subscribe('RelatedBoats'),permSubs.subscribe('TripLengths')];
+    },
+    onBeforenAction: function(){
+      AccountsEntry.signInRequired(this);
     },
     onAfterAction: function(){
       GAnalytics.pageview("/profile");
