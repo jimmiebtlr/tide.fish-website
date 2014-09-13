@@ -6,7 +6,7 @@ var ambiguousBoat = function(){
 }
 
 Template.calendar.created = function(){
-  if( Session.get('calDate') === null ){
+  if( Session.get('calDate') === undefined ){
     Session.set('calDate',moment().format("MM/DD/YYYY"));
   }
 }
