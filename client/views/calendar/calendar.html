@@ -1,17 +1,16 @@
 <template name="calendar">
-  <div class="panel row">
-    <div class="col-md-6">
-      <div id="calendar" class="calendar">
-      </div>
+  <div class="row panel">
+    <div class="col-sm-2">
+      {{> vertiCal numDays=14}}
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8 col-md-offset-1 col-sm-10">
       {{> schedule}}
     </div>
   </div>
 </template>
 
 <template name="schedule">
-    <legend><h1>{{dateString}}</h1></legend>
+    <legend class="text-center"><h2>{{dateString}}</h2></legend>
     {{#each boatData}}
       <div id="boat-{{_id}}" class="well">
         {{#if ambiguousBoat}}

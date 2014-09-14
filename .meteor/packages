@@ -16,7 +16,6 @@ matb33:collection-hooks
 mrt:moment
 gfk:notifications
 datariot:ganalytics
-mrt:fullcalendar
 jimmiebtlr:bootstrap-wysihtml5
 nemo64:bootstrap
 natestrauser:font-awesome
@@ -26,4 +25,5 @@ meteorhacks:subs-manager
 accounts-google
 accounts-facebook
 splendido:accounts-emails-field
+jimmiebtlr:vertical@0.0.1-rc.5
 

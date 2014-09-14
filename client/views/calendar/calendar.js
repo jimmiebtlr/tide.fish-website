@@ -5,38 +5,16 @@ var ambiguousBoat = function(){
   return false;
 }
 
-Template.calendar.created = function(){
-  if( Session.get('calDate') === undefined ){
-    Session.set('calDate',moment().format("MM/DD/YYYY"));
-  }
-}
-
-Template.calendar.rendered = function(){
-  $('#calendar').fullCalendar({
-    dayClick: function(d,evt,view){
-      var date = new Date( d );
-      Session.set('calDate',(moment(date)).format("MM/DD/YYYY"));
-      Session.set("schedule-editBooking",undefined);
-      Session.set("schedule-editBoat",undefined);
-      $('#calendar').fullCalendar('gotoDate',date);
-      $('#calendar').fullCalendar('select',date);
-      GAnalytics.event("calendar","selected-date-changed");
-    }
-  });
-  $('#calendar').fullCalendar('select', new Date( Session.get('calDate')));
-}
-
 Template.calendar.destroy = function(){
-  Session.set("schedule-editBooking",undefined);
-  Session.set("schedule-editBoat",undefined);
+
 }
 
 Template.schedule.dateString = function(){
-  return Session.get('calDate');
+  return Session.get('vertiCalSelectedDate');
 }
 
 Template.schedule.boatData = function(){
-  var date = moment(Session.get('calDate'), "MM/DD/YYYY");
+  var date = moment(Session.get('vertiCalSelectedDate'), "MM/DD/YYYY");
   var dateStart = date.clone().startOf("day").utc();
   var dateEnd = date.clone().endOf("day").utc();
   var boats = Boats.related(Meteor.userId()).fetch();
@@ -90,7 +68,7 @@ Template.schedule.events = {
 }
 
 Template.schedule.dateFuture = function(){
-  return moment(Session.get('calDate'), "MM/DD/YYYY") > moment().utc().endOf("day");
+  return moment(Session.get('vertiCalSelectedDate'), "MM/DD/YYYY") > moment().utc().endOf("day");
 }
 
 var ambiguousBoat = function(){

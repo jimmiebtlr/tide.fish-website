@@ -61,7 +61,7 @@ AutoForm.addHooks(['calBookingForm'],{
       }else{
         doc.boatId = Boats.related( Meteor.userId() ).fetch()[0]._id;
       }
-      doc.date = new Date(Session.get('calDate'));
+      doc.date = new Date(Session.get('vertiCalSelectedDate'));
       doc.ownerId = boat.ownerId;
       doc.external = true;
       return doc;
