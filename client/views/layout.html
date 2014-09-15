@@ -65,11 +65,16 @@
 <template name="footer">
   <div id="footer" class="navbar navbar-inverse">
     <div class="container">
-      <a href='{{pathFor "feature_request"}}'>Request Feature</a>  &middot;  
-      <a href='{{pathFor "bug_report"}}'>Report a Bug</a>  &middot;  
-      <a href='{{pathFor "contact_us"}}'>Contact Us</a><br>
-      Created by <a href="http://elevatedevdesign.com">Elevate Development and Design, LLC.</a><br>
-      Font Awesome by Dave Gandy - <a href="http://fontawesome.io">http://fontawesome.io</a>
+      <div class="col-md-10">
+        <a href='{{pathFor "feature_request"}}'>Request Feature</a>  &middot;  
+        <a href='{{pathFor "bug_report"}}'>Report a Bug</a>  &middot;  
+        <a href='{{pathFor "contact_us"}}'>Contact Us</a><br>
+        Created by <a href="http://elevatedevdesign.com">Elevate Development and Design, LLC.</a><br>
+        Font Awesome by Dave Gandy - <a href="http://fontawesome.io">http://fontawesome.io</a>
+      </div>
+      <div class="col-md-2">
+        <a href="https://www.positivessl.com" style="font-family: arial; font-size: 10px; color: #212121; text-decoration: none;"><img src="https://www.positivessl.com/images-new/PositiveSSL_tl_trans2.png" alt="SSL Certificate" title="SSL Certificate" border="0" /></a>
+      </div>
     </div>
   </div>
 </template>
