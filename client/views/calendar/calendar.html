@@ -1,15 +1,15 @@
-<template name="calendar">
+<template name="schedule">
   <div class="row panel">
     <div class="col-sm-2">
       {{> vertiCal numDays=14}}
     </div>
     <div class="col-md-8 col-md-offset-1 col-sm-10">
-      {{> schedule}}
+      {{> scheduleDetails}}
     </div>
   </div>
 </template>
 
-<template name="schedule">
+<template name="scheduleDetails">
     <legend class="text-center"><h2>{{dateString}}</h2></legend>
     {{#each boatData}}
       <div id="boat-{{_id}}" class="well">

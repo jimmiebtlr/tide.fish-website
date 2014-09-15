@@ -44,8 +44,8 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             {{#if currentUser}}
-              <li><a href="/calendar">Calendar</a></li>
-              <li><a href="/profile">Profile</a></li>
+              <li><a href="{{pathFor 'schedule'}}"><i class="fa fa-calendar-o"> Schedule</i></a></li>
+              <li><a href="{{pathFor 'profile'}}"><i class="fa fa-user"> Profile</i></a></li>
             {{/if}}
           </ul>
           <ul class="nav navbar-nav navbar-right">

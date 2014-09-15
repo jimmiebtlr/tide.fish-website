@@ -46,9 +46,9 @@ Router.map(function() {
       GAnalytics.pageview("/");
     }
   });
-  this.route('calendar', {
-    path: '/calendar',
-    template: 'calendar',
+  this.route('schedule', {
+    path: '/schedule',
+    template: 'schedule',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
       return [permSubs.subscribe('TripLengths'),permSubs.subscribe('RelatedBoats'),tmpSubs.subscribe('Bookings')];

@@ -5,15 +5,11 @@ var ambiguousBoat = function(){
   return false;
 }
 
-Template.calendar.destroy = function(){
-
-}
-
-Template.schedule.dateString = function(){
+Template.scheduleDetails.dateString = function(){
   return Session.get('vertiCalSelectedDate');
 }
 
-Template.schedule.boatData = function(){
+Template.scheduleDetails.boatData = function(){
   var date = moment(Session.get('vertiCalSelectedDate'), "MM/DD/YYYY");
   var dateStart = date.clone().startOf("day").utc();
   var dateEnd = date.clone().endOf("day").utc();
@@ -37,7 +33,7 @@ Template.schedule.boatData = function(){
   return boats;
 }
 
-Template.schedule.events = {
+Template.scheduleDetails.events = {
   'click .delete-btn': function( event ){
     if( confirm("Are you sure you would like to cancel this booking?") ){
       Bookings.remove({'_id': event.currentTarget.id.replace("delete-","")});
@@ -67,7 +63,7 @@ Template.schedule.events = {
   }
 }
 
-Template.schedule.dateFuture = function(){
+Template.scheduleDetails.dateFuture = function(){
   return moment(Session.get('vertiCalSelectedDate'), "MM/DD/YYYY") > moment().utc().endOf("day");
 }
 
