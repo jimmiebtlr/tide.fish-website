@@ -1,5 +1,4 @@
-Meteor.startup(function () {
-});
+Kadira.connect('3Jqsd2Qz6QFaBPC34', '155571df-d574-4d14-aa34-a7a5c8dfff40');
 
 Meteor.methods({
   'addAllowedUser': function(boatId, emails){
