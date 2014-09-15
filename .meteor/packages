@@ -14,7 +14,6 @@ djedi:sanitize-html
 joshowens:accounts-entry
 matb33:collection-hooks
 mrt:moment
-gfk:notifications
 datariot:ganalytics
 jimmiebtlr:bootstrap-wysihtml5
 nemo64:bootstrap
@@ -25,7 +24,7 @@ meteorhacks:subs-manager
 accounts-google
 accounts-facebook
 splendido:accounts-emails-field
-jimmiebtlr:vertical@0.0.1-rc.7
+jimmiebtlr:vertical@0.0.1-rc.8
 force-ssl
 meteorhacks:kadira
 

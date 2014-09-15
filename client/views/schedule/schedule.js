@@ -37,7 +37,7 @@ Template.scheduleDetails.events = {
   'click .delete-btn': function( event ){
     if( confirm("Are you sure you would like to cancel this booking?") ){
       Bookings.remove({'_id': event.currentTarget.id.replace("delete-","")});
-      Notifications.success("Booking removed successfully");
+      //Notify.success("Booking removed successfully");
     }
   },
   'click .edit-btn': function( evt ){
