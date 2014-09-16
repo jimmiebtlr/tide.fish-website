@@ -73,20 +73,20 @@ AutoForm.addHooks(['calBookingForm'],{
   after: {
     insert: function( err ){
       if( err === undefined ){
-        //Notify.success("Booking added successfully");
+        Notifications.success("Booking added successfully");
         Session.set("schedule-editBoat",undefined);
         Session.set("schedule-editBooking",undefined);
       }else{
-        //Notify.error(err.toString() );
+        Notifications.error(err.toString() );
       }
     },
     update: function( err ){
       if( err === undefined ){
-        //Notify.success("Booking updated successfully");
+        Notifications.success("Booking updated successfully");
         Session.set("schedule-editBoat",undefined);
         Session.set("schedule-editBooking",undefined);
       }else{
-        //Notify.error(err.toString() );
+        Notifications.error(err.toString() );
       }
     }
   }

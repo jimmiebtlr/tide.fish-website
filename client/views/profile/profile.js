@@ -51,7 +51,7 @@ Template.boatProfile.events = {
             $('#addAllowedBookingUser').val("");
           });
         }else{
-          //Notify.error( "Could not find user " + resp.errors );
+          Notifications.error( "Could not find user " + resp.errors );
         }
       });
     }
@@ -75,7 +75,7 @@ AutoForm.addHooks(['boatProfile'],{
   after: {
     update: function(err){
       if( err === undefined ){
-        //Notify.success("Saved", "Profile saved successfully");
+        Notifications.success("Saved", "Profile saved successfully");
       }
     }
   }
