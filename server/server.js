@@ -1,24 +1,17 @@
 Kadira.connect('3Jqsd2Qz6QFaBPC34', '155571df-d574-4d14-aa34-a7a5c8dfff40');
 
 Meteor.methods({
-  'addAllowedUser': function(boatId, emails){
-    check( boatId, String );
-    check( emails, [String]);
-    console.log( emails );
-    var boat = Boats.findOne( boatId );
+  'findUser': function(email){
+    check( email, String);//SimpleSchema.RegEx.Email);
+    if( Meteor.userId() === undefined ){ return; }
+
+    var user = Meteor.users.findOne({'registered_emails.address': email });
     var resp = {};
-    resp.success = [];
-    resp.errors = [];
-    if( !boat || boat.ownerId !== Meteor.userId() ){ console.log( "user boat mismatch"); return; }
-   
-    _.each(emails, function(email){
-      var user = Meteor.users.findOne({'registered_emails.address': email });
-      if( !user ){ 
-        resp.errors.push(email);
-      }else{
-        resp.success.push({userId: user._id, email: email });
-      }
-    });
+    if( !user ){ 
+      resp.error = "User not found";
+    }else{
+      resp.userId = user._id;
+    }
     return resp;
   },
   'sendEmail': function( formVals ){

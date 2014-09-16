@@ -5,35 +5,9 @@
 </template>
 
 <template name="boatProfile">
-    {{#autoForm collection="Boats" id="boatProfile" doc=editDoc type="update" class="form-horizontal"}}
-      <fieldset>
-        <div class="row">
-          {{> afQuickField name='name' required="true" template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
-          {{> afQuickField name='capacity' template="bootstrap3-horizontal" label-class="col-sm-2 text-right" input-col-class="col-sm-10"}}
-          <div class="form-group">
-            <div class="col-sm-2 text-right">
-              <b>Users allowed to book</b><br>
-            </div>
-            <div class="col-sm-10">
-              {{#each allowedUsers}}
-                <div id="{{userId}}">
-                  {{email}}
-                  <button class="btn btn-default removeAllowedUser btn-xs align-right"><i class="fa fa-trash"></i>&nbsp;Remove</button><br>
-                </div>
-              {{/each}}
-              {{#each toBeAdded}}
-                <div id="{{userId}}">
-                  {{email}}
-                  <button class="btn btn-default removeToBeAdded btn-xs align-right"><i class="fa fa-trash"></i>&nbsp;Remove</button><br>
-                </div>
-              {{/each}}
-              <input id="addAllowedBookingUser" class="form-control" type="email"/>
-            </div>
-            <div class="col-sm-10 col-sm-offset-2">
-              <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Save</button>
-            </div>
-          </div>
-        </div>
-      </fieldset>
-    {{/autoForm}}
+  <div class="row">
+    {{> boatDetails}}
+    <br>
+    {{> boatSharing}}
+  </div>
 </template>

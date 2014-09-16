@@ -28,6 +28,7 @@ Router.map(function() {
         }
       });
       GAnalytics.pageview("/");
+      permSubs.subscribe('Notifications');
     }
   });
   this.route('welcome', {
@@ -44,6 +45,7 @@ Router.map(function() {
         }
       });
       GAnalytics.pageview("/");
+      permSubs.subscribe('Notifications');
     }
   });
   this.route('schedule', {
@@ -55,6 +57,7 @@ Router.map(function() {
     },
     onAfterAction: function(){
       GAnalytics.pageview("/calendar");
+      permSubs.subscribe('Notifications');
     }
   });
   this.route('newBooking', {
@@ -62,9 +65,11 @@ Router.map(function() {
     template: 'bookingForm',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
-      return [Meteor.subscribe('Boats')];
+      return [tmpSubs.subscribe('Boats')];
     },
-    cache: true
+    onAfterAction: function(){
+      permSubs.subscribe('Notifications');
+    }
   });
   this.route('profile', {
     path: '/profile',
@@ -75,6 +80,7 @@ Router.map(function() {
     },
     onAfterAction: function(){
       GAnalytics.pageview("/profile");
+      permSubs.subscribe('Notifications');
     },
     cache: true
   });

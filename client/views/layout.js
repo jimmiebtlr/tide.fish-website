@@ -28,7 +28,7 @@ Router.onAfterAction( function(){
  */
 Template.footer.rendered = function(){
   if( Session.get('hideFooter') === undefined ){
-    var footerHeight = $("#footer").innerHeight();
+    var footerHeight = $("#footer").outerHeight();
     $("body").css("margin-bottom", footerHeight);
   }
 }

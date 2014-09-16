@@ -17,3 +17,7 @@ Meteor.publish('Bookings', function(){
     return;
   }
 });
+
+Meteor.publish('Notifications', function(){
+  return Notifications.find({$or: [{from: this.userId}, {to: this.userId}] });
+});
