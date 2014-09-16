@@ -32,6 +32,7 @@ fastclick@1.0.0-cordova1
 follower-livedata@1.0.1
 force-ssl@1.0.1
 geojson-utils@1.0.0
+google@1.1.0
 handlebars@1.0.0
 html-tools@1.0.0
 htmljs@1.0.0-cordova1
