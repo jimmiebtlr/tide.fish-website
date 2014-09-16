@@ -4,7 +4,7 @@ Meteor.startup(function () {
     //privacyUrl: '/privacy-policy'     // if set adds link to privacy policy and 'you agree to ...' on sign-up page
     //termsUrl: '/terms-of-use'         // if set adds link to terms  'you agree to ...' on sign-up page
     homeRoute: '/',                    // mandatory - path to redirect to after sign-out
-    dashboardRoute: '/calendar',      // mandatory - path to redirect to after successful sign-in
+    dashboardRoute: '/schedule',      // mandatory - path to redirect to after successful sign-in
     profileRoute: '/profile',
     passwordSignupFields: 'EMAIL_ONLY',
     //showSignupCode: true
@@ -17,11 +17,6 @@ Meteor.startup(function () {
       type: "text",                            // The type of field you want
       required: true                           // Adds html 5 required property if true
      }]*/
-  });
-
-
-  _.extend(Notifications.defaultOptions, {
-      timeout: 3500
   });
 
   UI.registerHelper("tripLengthOptions", function(){
