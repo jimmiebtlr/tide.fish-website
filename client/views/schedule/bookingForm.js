@@ -77,7 +77,7 @@ AutoForm.addHooks(['calBookingForm'],{
         Session.set("schedule-editBoat",undefined);
         Session.set("schedule-editBooking",undefined);
       }else{
-        Notifications.error(err.toString() );
+        //Notify.error(err.toString() );
       }
     },
     update: function( err ){
@@ -86,7 +86,7 @@ AutoForm.addHooks(['calBookingForm'],{
         Session.set("schedule-editBoat",undefined);
         Session.set("schedule-editBooking",undefined);
       }else{
-        Notifications.error(err.toString() );
+        //Notify.error(err.toString() );
       }
     }
   }
