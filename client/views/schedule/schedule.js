@@ -1,10 +1,3 @@
-var ambiguousBoat = function(){
-  if( Boats.related(Meteor.userId() ).count() > 1 ){
-    return true;
-  }
-  return false;
-}
-
 Template.scheduleDetails.dateString = function(){
   return Session.get('vertiCalSelectedDate');
 }
@@ -66,12 +59,3 @@ Template.scheduleDetails.events = {
 Template.scheduleDetails.dateFuture = function(){
   return moment(Session.get('vertiCalSelectedDate'), "MM/DD/YYYY") > moment().utc().endOf("day");
 }
-
-var ambiguousBoat = function(){
-  if( Boats.related(Meteor.userId()).count() > 1 ){
-    return true;
-  }
-  return false;
-}
-
-Template.schedule.ambiguousBoat = ambiguousBoat;

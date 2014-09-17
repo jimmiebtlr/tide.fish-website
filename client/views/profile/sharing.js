@@ -1,28 +1,5 @@
-Template.boatSharing.created = function(){
-  if( Session.get("toBeAdded") === undefined ){
-    Session.set("toBeAdded",[]);
-  }
-  
-  if( Session.get("currentlyAllowed") === undefined ){
-    Session.set("currentlyAllowed",Template.boatProfile.editDoc().allowedBookingUsers);
-  }
-}
-
 Template.boatProfile.editDoc = function(){
-  return Boats.findOne({'ownerId': Meteor.userId() });
-}
-
-Template.boatSharing.destroyed = function(){
-  Session.set("toBeAdded",undefined);
-  Session.set("currentlyAllowed",undefined);
-};
-
-Template.boatSharing.allowedUsers = function(){
-  return Session.get("currentlyAllowed");
-}
-
-Template.boatSharing.toBeAdded = function(){
-  return Session.get("toBeAdded");
+  return Boats.owned( Meteor.userId() );
 }
 
 Template.boatSharing.events = {
@@ -31,25 +8,40 @@ Template.boatSharing.events = {
     var boat = Template.boatProfile.editDoc();
     Meteor.call('findUser', $('#newBookingUser').val(), function(err, resp){
       if( resp.error === undefined && err === undefined ){
-        var success = Notifications.insert({from: Meteor.userId(), to: resp.userId });
-        console.log( success );
+        Notifications.insert({from: Meteor.userId(), to: resp.userId, notifyType: "bookingSharingRequest"});
         $('#newBookingUser').val("");
       }else{
         console.log( err );
         console.log( resp.error );
       }
     });
-  },
-  'click .removeAllowedUser': function( evt ){
-    var cas = Session.get("currentlyAllowed");
-    var cas = cas.filter( function(ca){
-      return (evt.currentTarget.parentNode.id !== ca.userId); 
-    });
-    Session.set("currentlyAllowed", cas);
-  },
-  'blur #addAllowedBookingUser': function(){
-    if( $('#addAllowedBookingUser').val() !== "" ){
-
-    }
   }
+}
+
+/*
+ * Active
+ */
+Template.shared.shared = function(){
+  return Boats.owned(Meteor.userId()).allowedBookingUsers;
+}
+
+/*
+ * Pending
+ */
+Template.pendingShares.pendingShares = function(){
+  return Notifications.find({'$and': [{notifyType: "bookingSharingRequest"},{from: Meteor.userId()},{accepted: false},{declined: false}]});
+}
+
+Template.pendingShare.events({
+  'click .remove': function(){
+    Notifications.remove({'_id': this._id});
+  }
+});
+
+/*
+ * Shared with you
+ */
+Template.sharedWithYou.sharedWithYou = function(){
+  console.log( Boats.bookingsSharedWith( Meteor.userId() ).fetch() );
+  return Boats.bookingsSharedWith( Meteor.userId() );
 }

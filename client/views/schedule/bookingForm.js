@@ -1,12 +1,3 @@
-var ambiguousBoat = function(){
-  if( Boats.related(Meteor.userId() ).count() > 1 ){
-    return true;
-  }
-  return false;
-}
-
-Template.calBookingForm.ambiguousBoat = ambiguousBoat;  
-
 Template.calBookingForm.boatOptions = function(){
   var boatOptions = [];
   boatOptions.push({value:"", label:""});

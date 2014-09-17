@@ -31,4 +31,12 @@ Meteor.startup(function () {
   UI.registerHelper("isDisconnected", function(){
     return !Meteor.status().connected;
   });
+  
+  UI.registerHelper("ambiguousBoat", function(){
+    return Boats.ambiguous( Meteor.userId() );
+  });
+
+  NotificationSettings.bookingSharingRequest = {
+    template: Template.sharingNotification
+  };
 });

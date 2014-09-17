@@ -2,7 +2,7 @@ Kadira.connect('3Jqsd2Qz6QFaBPC34', '155571df-d574-4d14-aa34-a7a5c8dfff40');
 
 Meteor.methods({
   'findUser': function(email){
-    check( email, String);//SimpleSchema.RegEx.Email);
+    check( email, String);
     if( Meteor.userId() === undefined ){ return; }
 
     var user = Meteor.users.findOne({'registered_emails.address': email });
@@ -29,3 +29,10 @@ Meteor.methods({
     });
   }
 });
+
+NotificationSettings.bookingSharingRequest = {
+  afterAccept: function(doc){
+    var boat = Boats.owned(doc.from);
+    Boats.update({'_id': boat._id},{$push: {'allowedBookingUsers': doc.to}});
+  }
+};

@@ -4,6 +4,7 @@ Meteor.publish('TripLengths', function(){
 
 Meteor.publish('RelatedBoats', function(){
   if( this.userId ){
+    console.log( Boats.related( this.userId ).fetch() );
     return Boats.related( this.userId );
   }else{
     return;
@@ -16,8 +17,4 @@ Meteor.publish('Bookings', function(){
   }else{
     return;
   }
-});
-
-Meteor.publish('Notifications', function(){
-  return Notifications.find({$or: [{from: this.userId}, {to: this.userId}] });
 });
