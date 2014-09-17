@@ -49,10 +49,10 @@
             {{/if}}
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            {{#unless isDisconnected}}
-              <li>{{> notifyIcon}}</li>
-            {{/unless}}
             {{#if currentUser}}
+              {{#unless isDisconnected}}
+                <li>{{> notifyIcon}}</li>
+              {{/unless}}
               <li><a href="/sign-out">Sign Out</a></li>
             {{else}}
               <li><a href="/sign-in">Sign In</a></li>
