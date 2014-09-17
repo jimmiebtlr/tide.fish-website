@@ -4,10 +4,15 @@ Meteor.publish('TripLengths', function(){
 
 Meteor.publish('RelatedBoats', function(){
   check( this.userId, String );
-  return [
-    Boats.related( this.userId ),
-    Meteor.users.find({'_id': {$in: Boats.owned(this.userId).allowedBookingUsers}})
-  ];
+  var userIds = Boats.owned(this.userId).allowedBookingUsers;
+  if( userIds.length > 0 ){
+    return [
+      Boats.related( this.userId ),
+      Meteor.users.find({'_id': {$in: Boats.owned(this.userId).allowedBookingUsers}})
+    ];
+  }else{
+    return Boats.related( this.userId );
+  }
 });
 
 Meteor.publish('Bookings', function(){
