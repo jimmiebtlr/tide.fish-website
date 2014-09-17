@@ -10,12 +10,21 @@ Router.configure({
   loadingTemplate: 'loading',
 });
 
+var permSubsList = function(){
+  return [
+    permSubs.subscribe('Notifications'),
+    permSubs.subscribe('RelatedBoats'),
+    permSubs.subscribe('TripLengths')
+  ];
+};
+
 Router.onBeforeAction('loading');
 
 Router.map(function() {
   this.route('home', {
     path: '/',
     template: 'home',
+    waitOn: permSubsList,
     onAfterAction: function() {
       SEO.set({
         title: "Tide.Fish - Cloud Booking for Charter Fishing",
@@ -28,11 +37,11 @@ Router.map(function() {
         }
       });
       GAnalytics.pageview("/");
-      permSubs.subscribe('Notifications');
     }
   });
   this.route('welcome', {
     path: 'welcome',
+    waitOn: permSubs,
     onAfterAction: function() {
       SEO.set({
         title: "Tide.Fish - Cloud Booking for Charter Fishing",
@@ -45,7 +54,6 @@ Router.map(function() {
         }
       });
       GAnalytics.pageview("/");
-      permSubs.subscribe('Notifications');
     }
   });
   this.route('schedule', {
@@ -53,35 +61,42 @@ Router.map(function() {
     template: 'schedule',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
-      return [permSubs.subscribe('TripLengths'),permSubs.subscribe('RelatedBoats'),tmpSubs.subscribe('Bookings')];
+      return [permSubsList(),tmpSubs.subscribe('Bookings')];
     },
     onAfterAction: function(){
       GAnalytics.pageview("/calendar");
-      permSubs.subscribe('Notifications');
     }
   });
   this.route('newBooking', {
     path: '/bookings/new',
     template: 'bookingForm',
-    waitOn: function(){
+    onBeforeAction: function(){
       AccountsEntry.signInRequired(this);
-      return [tmpSubs.subscribe('Boats')];
     },
     onAfterAction: function(){
-      permSubs.subscribe('Notifications');
-    }
+      permSubsList();
+    },
   });
   this.route('profile', {
     path: '/profile',
     template: 'profile',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
-      return [permSubs.subscribe('RelatedBoats'),permSubs.subscribe('TripLengths')];
+      return permSubsList();
     },
     onAfterAction: function(){
       GAnalytics.pageview("/profile");
-      permSubs.subscribe('Notifications');
+    }
+  });
+  this.route('sharing', {
+    path: '/sharing',
+    template: 'sharing',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
     },
-    cache: true
+    onAfterAction: function(){
+      GAnalytics.pageview("/sharing");
+    }
   });
 }); 

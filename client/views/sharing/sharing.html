@@ -1,10 +1,16 @@
-<template name="boatSharing">
-  <legend>Sharing</legend>
-  <p class="text-muted">Allow others to add and remove bookings.  Useful when your marina or others may talk with potential anglers.</p><br>
-  {{> newShareRequest}}<br><br>
-  {{> shared}}<br><br>
-  {{> pendingShares}}<br><br>
-  {{> sharedWithYou}}
+<template name="sharing">
+  <div class="panel">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <legend>Sharing</legend>
+        <p class="text-muted">Allow others to add and remove bookings.  Useful when your marina or others may talk with potential anglers.</p><br>
+        {{> newShareRequest}}<br><br>
+        {{> shared}}<br><br>
+        {{> pendingShares}}<br><br>
+        {{> sharedWithYou}}<br><br>
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="newShareRequest">
@@ -17,7 +23,6 @@
 
 <template name="pendingShares">
   <legend>Pending Shares</legend>
-  <p class="text-muted">Awaiting user response.</p>
   {{#each pendingShares}}
     {{> pendingShare}}
   {{/each}}
@@ -26,7 +31,7 @@
 <template name="pendingShare">
   <div class="row">
     <div class="col-md-8">
-      {{to}}
+      {{email}}
     </div>
     <button class="btn btn-danger remove"><i class="fa fa-trash">&nbsp;Remove</i></button>
   </div>
@@ -34,7 +39,6 @@
 
 <template name="shared">
   <legend>Active Shares</legend>
-  <p class="text-muted">The following users are allowed to manage your bookings.</p>
   {{#each shared}}
     {{> singleShare}}
   {{/each}}
@@ -43,9 +47,9 @@
 <template name="singleShare">
   <div class="row">
     <div class="col-md-8">
-      {{this}}
+      {{email}}
     </div>
-    <button class="btn btn-danger"><i class="fa fa-trash">&nbsp;Remove</i></button>
+    <button class="btn btn-danger remove"><i class="fa fa-trash">&nbsp;Remove</i></button>
   </div>
 </template>
 
@@ -65,6 +69,6 @@
         No Name Set
       {{/if}}
     </div>
-    <button class="btn btn-danger"><i class="fa fa-trash">&nbsp;Remove</i></button>
+    <button class="btn btn-danger remove"><i class="fa fa-trash">&nbsp;Remove</i></button>
   </div>
 </template>

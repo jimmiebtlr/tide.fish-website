@@ -1,11 +1,11 @@
-Template.boatProfile.editDoc = function(){
+Template.newShareRequest.editDoc = function(){
   return Boats.owned( Meteor.userId() );
 }
 
-Template.boatSharing.events = {
+Template.newShareRequest.events = {
   'submit': function(evt){
     evt.preventDefault();
-    var boat = Template.boatProfile.editDoc();
+    var boat = Boats.owned( Meteor.userId() );
     Meteor.call('findUser', $('#newBookingUser').val(), function(err, resp){
       if( resp.error === undefined && err === undefined ){
         Notifications.insert({from: Meteor.userId(), to: resp.userId, notifyType: "bookingSharingRequest"});
@@ -25,11 +25,35 @@ Template.shared.shared = function(){
   return Boats.owned(Meteor.userId()).allowedBookingUsers;
 }
 
+Template.singleShare.email = function(){
+  var user = Meteor.users.findOne({'_id': this.valueOf()});
+  if( user !== undefined && user.registered_emails !== undefined ){
+    return user.registered_emails[0].address;
+  }else{
+    return '';
+  }
+}
+
+Template.singleShare.events({
+  'click .remove': function(){
+    Boats.update({'_id': Boats.owned(Meteor.userId())._id},{$pull: {'allowedBookingUsers': this.valueOf()}});
+  }
+});
+
 /*
  * Pending
  */
 Template.pendingShares.pendingShares = function(){
   return Notifications.find({'$and': [{notifyType: "bookingSharingRequest"},{from: Meteor.userId()},{accepted: false},{declined: false}]});
+}
+
+Template.pendingShare.email = function(){
+  var user = Meteor.users.findOne({'_id': this.to});
+  if( user !== undefined ){
+    return user.registered_emails[0].address;
+  }else{
+    return '';
+  }
 }
 
 Template.pendingShare.events({
@@ -42,6 +66,13 @@ Template.pendingShare.events({
  * Shared with you
  */
 Template.sharedWithYou.sharedWithYou = function(){
-  console.log( Boats.bookingsSharedWith( Meteor.userId() ).fetch() );
   return Boats.bookingsSharedWith( Meteor.userId() );
 }
+
+Template.sharedWithYou.events({
+  'click remove': function(){
+    console.log( this );
+    /*Meteor.call('removeSelfFromBoatBookings', ,function(){
+    });*/
+  }
+});
