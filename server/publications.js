@@ -3,7 +3,7 @@ Meteor.publish('TripLengths', function(){
 });
 
 Meteor.publish('RelatedBoats', function(){
-  check( this.userId, String );
+  if( !this.userId ){ return null; }
   var userIds = Boats.owned(this.userId).allowedBookingUsers;
   if( userIds !== undefined && userIds.length > 0 ){
     return [
@@ -16,6 +16,6 @@ Meteor.publish('RelatedBoats', function(){
 });
 
 Meteor.publish('Bookings', function(){
-  check( this.userId, String );
+  if( !this.userId ){ return null; }
   return Bookings.find({'boatId': {$in: Boats.relatedIds(this.userId)}});
 });

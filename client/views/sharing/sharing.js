@@ -49,7 +49,7 @@ Template.pendingShares.pendingShares = function(){
 
 Template.pendingShare.email = function(){
   var user = Meteor.users.findOne({'_id': this.to});
-  if( user !== undefined ){
+  if( user !== undefined && user.registered_emails && user.registered_emails.length > 0 ){
     return user.registered_emails[0].address;
   }else{
     return '';
