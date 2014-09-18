@@ -12,37 +12,54 @@
 <template name="scheduleDetails">
     <legend class="text-center"><h2>{{dateString}}</h2></legend>
     {{#each boatData}}
-      <div id="boat-{{_id}}" class="well">
-        {{#if ambiguousBoat}}
-          <legend>{{name}}
-            {{#if dateFuture}} 
-              <button type="button" class="btn btn-default new-btn btn-xs pull-right"><i class="fa fa-edit"></i>&nbsp;New</button>
-            {{/if}}
-          </legend>
-        {{/if}}
-        {{#if hasBookings}}
-          {{#each bookings}}
-            <h4>{{tripLength}}
-              {{#if dateFuture}} 
-                <div class="btn-group pull-right">
-                  <button id="edit-{{_id}}" type="button" class="btn btn-default edit-btn btn-xs"><i class="fa fa-edit"></i>&nbsp;Edit</button>
-                  <button id="delete-{{_id}}" type="button" class="btn btn-danger delete-btn btn-xs"><i class="fa fa-trash"></i>&nbsp;Cancel</button>
-                </div>
-              {{/if}}
-            </h4>
-            {{{notes}}}
-          {{/each}}
-        {{else}}
-          None scheduled
-        {{/if}}
-        {{#if bookingForm}}
-          {{>calBookingForm}}
-        {{/if}}
-      </div>
+      {{> scheduleBoatLineItem}}
     {{/each}}
-    {{#unless ambiguousBoat}}
-      {{#if dateFuture}}
-        {{> calBookingForm}}
-      {{/if}}
+</template>
+
+<template name="scheduleBoatLineItem">
+  <div id="boat-{{_id}}" class="well">
+    {{#if ambiguousBoat}}
+      <legend>{{name}}
+        {{#if dateFuture}} 
+          <button type="button" class="btn btn-default new-btn btn-xs pull-right"><i class="fa fa-edit"></i>&nbsp;New</button>
+        {{/if}}
+      </legend>
+    {{/if}}
+    
+    {{#if newForm}}
+      <div class="well">
+        {{>calBookingForm}}
+      </div>
+    {{/if}}
+    
+    {{#if bookings}}
+      {{#each bookings}}
+        {{> scheduleBookingLineItem}}    
+      {{/each}}
+    {{/if}}
+
+    {{#unless bookings}}
+      {{#unless newForm}}
+        None scheduled
+      {{/unless}}
     {{/unless}}
+  </div>
+</template>
+
+<template name="scheduleBookingLineItem">
+  <div class="well">
+    {{#if editing}}
+      {{>calBookingForm}}
+    {{else}}
+      <h4>{{tripLength}}
+        {{#if dateFuture}} 
+          <div class="btn-group pull-right">
+            <button id="edit-{{_id}}" type="button" class="btn btn-default edit-btn btn-xs"><i class="fa fa-edit"></i>&nbsp;Edit</button>
+            <button id="delete-{{_id}}" type="button" class="btn btn-danger delete-btn btn-xs"><i class="fa fa-trash"></i>&nbsp;Cancel</button>
+          </div>
+        {{/if}}
+      </h4>
+      {{{notes}}}
+    {{/if}}
+  </div>
 </template>

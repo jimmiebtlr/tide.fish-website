@@ -1,0 +1,11 @@
+<template name="boatForm">
+  <div class="panel">
+    {{#autoForm collection="Boats" id="boatForm" doc=editDoc type=formMode}}
+      <fieldset>
+        {{> afQuickField name='name' required="true"}}
+        {{> afQuickField name='capacity'}}
+      </fieldset>
+      <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Save</button>
+    {{/autoForm}}
+  </div>
+</template>

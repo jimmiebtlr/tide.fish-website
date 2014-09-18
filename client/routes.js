@@ -77,17 +77,6 @@ Router.map(function() {
       permSubsList();
     },
   });
-  this.route('profile', {
-    path: '/profile',
-    template: 'profile',
-    waitOn: function(){
-      AccountsEntry.signInRequired(this);
-      return permSubsList();
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/profile");
-    }
-  });
   this.route('sharing', {
     path: '/sharing',
     template: 'sharing',
@@ -97,6 +86,28 @@ Router.map(function() {
     },
     onAfterAction: function(){
       GAnalytics.pageview("/sharing");
+    }
+  });
+  this.route('boats', {
+    path: '/boats',
+    template: 'boats',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats");
+    }
+  });
+  this.route('newBoat', {
+    path: '/boats/new',
+    template: 'boatForm',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/new");
     }
   });
 }); 

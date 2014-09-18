@@ -24,6 +24,30 @@ Router.onAfterAction( function(){
 });
 
 /*
+ * Boat Menu
+ */
+Template.boatMenu.boats = function(){ return Boats.related( Meteor.userId() ); }
+
+Template.boatMenu.label = function(){
+  if( Boats.selected() ){return Boats.selected().name;}
+  else{ return "All Boats"; }
+}
+
+Template.boatMenu.events({
+  'click .deselectBoat': function(){
+    Boats.setSelected(undefined);
+    Boats.setEditing(undefined);
+  }
+});
+
+Template.boatMenuLineItem.events({
+  'click': function(){
+    Boats.setSelected(this._id);
+    Boats.setEditing(this._id);
+  }
+});
+
+/*
  *  Footer
  */
 Template.footer.rendered = function(){

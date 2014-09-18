@@ -1,11 +1,9 @@
 <template name="calBookingForm">
-  <hr class="featurette-divider">
   {{#if editDoc}} 
     {{#autoForm collection="Bookings" id="calBookingForm" type="update" doc=editDoc}}
       <fieldset>
-        <h3>Update Booking</h3>
-        {{> afQuickField name='notes' id="notes" rows=3 label=false placeholder="Notes"}}
         {{> afQuickField name='tripLengthId' options=tripLengthOptions}}
+        {{> afQuickField name='notes' id="notes" rows=3 label=false placeholder="Notes"}}
         <button type="submit" class="btn btn-default">
           <i class="fa fa-edit fa-fw"></i>&nbsp; Save
         </button>
@@ -14,9 +12,8 @@
   {{else}}
     {{#autoForm collection="Bookings" id="calBookingForm" type="insert"}}
       <fieldset>
-        <h3>Insert Booking</h3>
-        {{> afQuickField name='notes' id="notes" rows=3 label=false placeholder="Notes"}}
         {{> afQuickField name='tripLengthId' options=tripLengthOptions}}
+        {{> afQuickField name='notes' id="notes" rows=3 label=false placeholder="Notes"}}
         <button type="submit" class="btn btn-default">
           <i class="fa fa-edit fa-fw"></i>&nbsp; Save
         </button>

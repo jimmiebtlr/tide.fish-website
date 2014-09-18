@@ -1,0 +1,14 @@
+<template name="boats">
+  <div class="panel">
+    {{#each boats}}
+      {{> boatLineItem}}
+    {{/each}}
+    <a href="{{pathFor 'newBoat'}}"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;New</button></a>
+  </div>
+</template>
+
+<template name="boatLineItem">
+  <div class="row">
+    {{name}}
+  </div>
+</template>
