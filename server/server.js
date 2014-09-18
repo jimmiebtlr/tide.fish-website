@@ -1,5 +1,9 @@
 Kadira.connect('3Jqsd2Qz6QFaBPC34', '155571df-d574-4d14-aa34-a7a5c8dfff40');
 
+Meteor.startup(function(){
+  //console.log( Meteor.users.find({}).fetch() );
+});
+
 Meteor.methods({
   'findUser': function(email){
     check( email, String);
@@ -38,7 +42,8 @@ Meteor.methods({
 
 NotificationSettings.bookingSharingRequest = {
   afterAccept: function(doc){
-    var boat = Boats.owned(doc.from);
+    console.log( doc );
+    var boat = Boats.findOne({'_id': doc.regarding});
     Boats.update({'_id': boat._id},{$push: {'allowedBookingUsers': doc.to}});
   }
 };

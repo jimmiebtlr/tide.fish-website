@@ -5,10 +5,10 @@ Template.newShareRequest.editDoc = function(){
 Template.newShareRequest.events = {
   'submit': function(evt){
     evt.preventDefault();
-    var boat = Boats.owned( Meteor.userId() );
     Meteor.call('findUser', $('#newBookingUser').val(), function(err, resp){
       if( resp.error === undefined && err === undefined ){
-        Notifications.insert({from: Meteor.userId(), to: resp.userId, notifyType: "bookingSharingRequest"});
+        console.log( Boats.selected()._id );
+        Notifications.insert({from: Meteor.userId(), to: resp.userId, notifyType: "bookingSharingRequest", regarding: Boats.selected()._id});
         $('#newBookingUser').val("");
       }else{
         console.log( err );
