@@ -1,13 +1,12 @@
-Template.boatForm.editDoc = Boats.editBoat;
+Template.boatForm.editDoc = Boats.editing;
 
-Template.boatForm.formMode = function(){ return Boats.editBoat() ? "update" : "insert"; };
+Template.boatForm.formMode = function(){ return Boats.editing() ? "update" : "insert"; };
 
 AutoForm.addHooks(['boatForm'],{
   after: {
     insert: function(err, result, template){
       if( err === undefined ){
-        console.log( result );
-        Boats.setEditBoat( result );
+        Boats.setEditing( result );
       }else{
         console.log(err);
       }

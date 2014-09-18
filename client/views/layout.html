@@ -71,7 +71,7 @@
       {{label}}<span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="" class="deselectBoat">All Boats</a></li>
+      <li><a href="{{pathFor 'boats'}}" class="deselectBoat">All Boats</a></li>
       {{#each boats}}
         <li>{{> boatMenuLineItem}}</li>
       {{/each}}

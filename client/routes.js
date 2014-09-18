@@ -110,4 +110,18 @@ Router.map(function() {
       GAnalytics.pageview("/boats/new");
     }
   });
+  this.route('editBoat', {
+    path: '/boats/:_id',
+    template: 'boatForm',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onBeforeAction: function(){
+      Boats.setEditing( this.params._id );
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/new");
+    }
+  });
 }); 
