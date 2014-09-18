@@ -67,21 +67,12 @@ Router.map(function() {
       GAnalytics.pageview("/calendar");
     }
   });
-  this.route('newBooking', {
-    path: '/bookings/new',
-    template: 'bookingForm',
-    onBeforeAction: function(){
-      AccountsEntry.signInRequired(this);
-    },
-    onAfterAction: function(){
-      permSubsList();
-    },
-  });
   this.route('sharing', {
     path: '/sharing',
     template: 'sharing',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
+      if( Boats.selected() === undefined ){ Router.go('schedule'); };
       return permSubsList();
     },
     onAfterAction: function(){
@@ -118,10 +109,10 @@ Router.map(function() {
       return permSubsList();
     },
     onBeforeAction: function(){
-      Boats.setEditing( this.params._id );
+      Boats.setSelected( this.params._id );
     },
     onAfterAction: function(){
-      GAnalytics.pageview("/boats/new");
+      GAnalytics.pageview("/boats/edit");
     }
   });
 }); 

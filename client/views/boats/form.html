@@ -1,11 +1,15 @@
 <template name="boatForm">
   <div class="panel">
-    {{#autoForm collection="Boats" id="boatForm" doc=editDoc type=formMode}}
-      <fieldset>
-        {{> afQuickField name='name' required="true"}}
-        {{> afQuickField name='capacity'}}
-      </fieldset>
-      <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>&nbsp;Save</button>
-    {{/autoForm}}
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        {{#autoForm collection="Boats" id="boatForm" doc=editDoc type=formMode}}
+          <fieldset data-toggle="tooltip" title="Only the boat owner can modify the form.">
+            {{> afQuickField name='name' required="true"}}
+            {{> afQuickField name='capacity'}}
+          </fieldset>
+          <button type="submit" class="btn btn-primary {{disabled}}"><i class="fa fa-edit"></i>&nbsp;Save</button>
+        {{/autoForm}}
+      </div>
+    </div>
   </div>
 </template>

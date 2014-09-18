@@ -1,3 +1,7 @@
+Template.sharing.owned = function(){ 
+  return Meteor.userId() === Boats.selected().ownerId;
+}
+
 Template.newShareRequest.editDoc = function(){
   return Boats.owned( Meteor.userId() );
 }
@@ -22,7 +26,7 @@ Template.newShareRequest.events = {
  * Active
  */
 Template.shared.shared = function(){
-  return Boats.owned(Meteor.userId()).allowedBookingUsers;
+  return Boats.selected().allowedBookingUsers;
 }
 
 Template.singleShare.email = function(){
@@ -36,7 +40,7 @@ Template.singleShare.email = function(){
 
 Template.singleShare.events({
   'click .remove': function(){
-    Boats.update({'_id': Boats.owned(Meteor.userId())._id},{$pull: {'allowedBookingUsers': this.valueOf()}});
+    Boats.update({'_id': Boats.selected()._id},{$pull: {'allowedBookingUsers': this.valueOf()}});
   }
 });
 
@@ -65,14 +69,20 @@ Template.pendingShare.events({
 /*
  * Shared with you
  */
+Template.sharedWithYou.created = function(){
+  this.data = Boats.selected();
+}
+
 Template.sharedWithYou.sharedWithYou = function(){
   return Boats.bookingsSharedWith( Meteor.userId() );
 }
 
 Template.sharedWithYou.events({
-  'click remove': function(){
-    console.log( this );
-    /*Meteor.call('removeSelfFromBoatBookings', ,function(){
-    });*/
+  'click .remove': function(){
+    if( confirm("Are you sure you would like to be removed from this boat?") ){
+      console.log( Boats.selected()._id );
+      console.log( Meteor.userId() );
+      Boats.update({'_id': Boats.selected()._id},{$pull: Meteor.userId()});
+    }
   }
 });

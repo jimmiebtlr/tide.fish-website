@@ -12,14 +12,18 @@
 </template>
 
 <template name="boatLineItem">
-  <div class="row">
+  <div class="row well">
     <div class="col-sm-8">
       {{name}}
     </div>
     <div class="col-sm-4">
       <div class="btn-group">
-        <button class="btn btn-primary edit"><i class="fa fa-edit"></i>&nbsp;Edit</button>
-        <button class="btn btn-danger remove"><i class="fa fa-trash"></i>&nbsp;Remove</button>
+        {{#if canEdit}}
+          <button class="btn btn-primary edit"><i class="fa fa-edit"></i>&nbsp;Edit</button>
+        {{/if}}
+        {{#if canRemove}}
+          <button class="btn btn-danger remove"><i class="fa fa-trash"></i>&nbsp;Remove</button>
+        {{/if}}
       </div>
     </div>
   </div>

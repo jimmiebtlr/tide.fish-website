@@ -31,12 +31,6 @@ Meteor.methods({
       subject: "Tide.Fish - " + formVals.subject,
       text: "Name: " + formVals.name + "\n\r" + "Id: " + Meteor.userId() + "\n\r" + formVals.details
     });
-  },
-  'removeSelfFromBoatBookings': function(boatId){
-    check( boatId, String );
-    if( Meteor.userId() !== null ){
-      Boats.update({'_id': boatId},{$pull: Meteor.userId()});
-    }
   }
 });
 

@@ -19,6 +19,10 @@ Template.nav.rendered = function(){
   }
 }
 
+Template.nav.events({
+  'click .editBoat': function(){ Router.go('editBoat',{'_id': Boats.selected()._id});}
+});
+
 Router.onAfterAction( function(){
   $('.navbar-collapse.in').collapse('hide');
 });
@@ -36,16 +40,22 @@ Template.boatMenu.label = function(){
 Template.boatMenu.events({
   'click .deselectBoat': function(){
     Boats.setSelected(undefined);
-    Boats.setEditing(undefined);
   }
 });
 
 Template.boatMenuLineItem.events({
   'click': function(){
     Boats.setSelected(this._id);
-    Boats.setEditing(this._id);
   }
 });
+
+Template.boatMenuLineItem.canEdit = function(){
+  return Boats.canEdit( this, Meteor.userId() );
+}
+
+Template.boatMenuLineItem.canRemove = function(){
+  return Boats.canRemove( this, Meteor.userId() );
+}
 
 /*
  *  Footer

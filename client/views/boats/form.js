@@ -1,6 +1,20 @@
-Template.boatForm.editDoc = Boats.editing;
+Template.boatForm.editDoc = Boats.selected;
 
-Template.boatForm.formMode = function(){ return Boats.editing() ? "update" : "insert"; };
+Template.boatForm.disabled = function(){ 
+  return Template.boatForm.formMode() === "readonly" ? "disabled" : "";
+}
+
+Template.boatForm.formMode = function(){ 
+  if( Boats.selected() ){
+    if( Boats.selected().ownerId !== Meteor.userId() ){
+      return "readonly";
+    }else{
+      return "update";
+    }
+  }else{
+    return "insert";
+  }
+};
 
 AutoForm.addHooks(['boatForm'],{
   after: {

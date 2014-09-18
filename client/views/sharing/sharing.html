@@ -2,15 +2,22 @@
   <div class="panel">
     <div class="row">
       <div class="col-md-offset-2 col-md-8">
-        <legend>Sharing</legend>
-        <p class="text-muted">Allow others to add and remove bookings.  Useful when your marina or others may talk with potential anglers.</p><br>
-        {{> newShareRequest}}<br><br>
-        {{> shared}}<br><br>
-        {{> pendingShares}}<br><br>
-        {{> sharedWithYou}}<br><br>
+        {{#if owned}}
+          {{> yourBoat}}
+        {{else}}
+          {{> sharedWithYou}}
+        {{/if}}
       </div>
     </div>
   </div>
+</template>
+
+<template name="yourBoat">
+  <legend>Sharing</legend>
+  <p class="text-muted">Allow others to add and remove bookings.  Useful when your marina or others may talk with potential anglers.</p><br>
+  {{> newShareRequest}}<br><br>
+  {{> shared}}<br><br>
+  {{> pendingShares}}<br><br>
 </template>
 
 <template name="newShareRequest">
@@ -55,20 +62,6 @@
 
 <template name="sharedWithYou">
   <legend>Shared With You</legend>
-  {{#each sharedWithYou}}
-    {{> singleSharedWithYou}}
-  {{/each}}
-</template>
-
-<template name="singleSharedWithYou">
-  <div class="row">
-    <div class="col-md-8">
-      {{#if name}}
-        {{name}}
-      {{else}}
-        No Name Set
-      {{/if}}
-    </div>
-    <button class="btn btn-danger remove"><i class="fa fa-trash">&nbsp;Remove</i></button>
-  </div>
+  <p class="text-muted">This boat has been shared with you. You can remove yourself from it below.</p>
+  <button class="btn btn-danger remove"><i class="fa fa-trash">&nbsp;Remove</i></button>
 </template>
