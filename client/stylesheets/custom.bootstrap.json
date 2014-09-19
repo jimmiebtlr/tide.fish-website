@@ -19,7 +19,7 @@
   "pagination":           false,
   "pager":                false,
   "labels":               true,
-  "badges":               false,
+  "badges":               true,
   "jumbotron":            true,
   "thumbnails":           false,
   "alerts":               true,

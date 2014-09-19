@@ -20,7 +20,15 @@ Template.nav.rendered = function(){
 }
 
 Template.nav.events({
-  'click .editBoat': function(){ Router.go('editBoat',{'_id': Boats.selected()._id});}
+  'click .editBoat': function(){ 
+    if( Boats.selected() ){
+      Router.go('editBoat',{'_id': Boats.selected()._id});
+    }else{
+      var boat = Boats.related().fetch()[0];
+      Boats.setSelected( boat._id );
+      Router.go('editBoat',{'_id': boat._id});
+    }
+  }
 });
 
 Router.onAfterAction( function(){

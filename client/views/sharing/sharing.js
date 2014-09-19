@@ -11,8 +11,14 @@ Template.newShareRequest.events = {
     evt.preventDefault();
     Meteor.call('findUser', $('#newBookingUser').val(), function(err, resp){
       if( resp.error === undefined && err === undefined ){
-        console.log( Boats.selected()._id );
-        Notifications.insert({from: Meteor.userId(), to: resp.userId, notifyType: "bookingSharingRequest", regarding: Boats.selected()._id});
+        var n = {
+          from: Meteor.userId(), 
+          to: resp.userId, 
+          notifyType: "bookingSharingRequest", 
+          regarding: Boats.selected()._id, 
+          fromMsg: "Sent to " + $('#newBookingUser').val()
+        };
+        Notifications.insert(n);
         $('#newBookingUser').val("");
       }else{
         console.log( err );
@@ -49,15 +55,6 @@ Template.singleShare.events({
  */
 Template.pendingShares.pendingShares = function(){
   return Notifications.find({'$and': [{notifyType: "bookingSharingRequest"},{from: Meteor.userId()},{accepted: false},{declined: false}]});
-}
-
-Template.pendingShare.email = function(){
-  var user = Meteor.users.findOne({'_id': this.to});
-  if( user !== undefined && user.registered_emails && user.registered_emails.length > 0 ){
-    return user.registered_emails[0].address;
-  }else{
-    return '';
-  }
 }
 
 Template.pendingShare.events({

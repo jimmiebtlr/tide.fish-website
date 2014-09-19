@@ -12,7 +12,6 @@ Router.configure({
 
 var permSubsList = function(){
   return [
-    permSubs.subscribe('Notifications'),
     permSubs.subscribe('RelatedBoats'),
     permSubs.subscribe('TripLengths')
   ];
@@ -96,6 +95,9 @@ Router.map(function() {
     waitOn: function(){
       AccountsEntry.signInRequired(this);
       return permSubsList();
+    },
+    onBeforeAction: function(){
+      Boats.setSelected();
     },
     onAfterAction: function(){
       GAnalytics.pageview("/boats/new");
