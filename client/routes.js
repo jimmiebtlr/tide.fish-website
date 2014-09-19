@@ -12,7 +12,6 @@ Router.configure({
 
 var permSubsList = function(){
   return [
-    permSubs.subscribe('Notifications'),
     permSubs.subscribe('RelatedBoats'),
     permSubs.subscribe('TripLengths')
   ];
@@ -67,36 +66,55 @@ Router.map(function() {
       GAnalytics.pageview("/calendar");
     }
   });
-  this.route('newBooking', {
-    path: '/bookings/new',
-    template: 'bookingForm',
-    onBeforeAction: function(){
-      AccountsEntry.signInRequired(this);
-    },
-    onAfterAction: function(){
-      permSubsList();
-    },
-  });
-  this.route('profile', {
-    path: '/profile',
-    template: 'profile',
-    waitOn: function(){
-      AccountsEntry.signInRequired(this);
-      return permSubsList();
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/profile");
-    }
-  });
   this.route('sharing', {
     path: '/sharing',
     template: 'sharing',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
+      if( Boats.selected() === undefined ){ Router.go('schedule'); };
       return permSubsList();
     },
     onAfterAction: function(){
       GAnalytics.pageview("/sharing");
+    }
+  });
+  this.route('boats', {
+    path: '/boats',
+    template: 'boats',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats");
+    }
+  });
+  this.route('newBoat', {
+    path: '/boats/new',
+    template: 'boatForm',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onBeforeAction: function(){
+      Boats.setSelected();
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/new");
+    }
+  });
+  this.route('editBoat', {
+    path: '/boats/:_id',
+    template: 'boatForm',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onBeforeAction: function(){
+      Boats.setSelected( this.params._id );
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/edit");
     }
   });
 }); 

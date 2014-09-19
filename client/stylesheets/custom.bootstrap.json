@@ -19,7 +19,7 @@
   "pagination":           false,
   "pager":                false,
   "labels":               true,
-  "badges":               false,
+  "badges":               true,
   "jumbotron":            true,
   "thumbnails":           false,
   "alerts":               true,
@@ -31,9 +31,9 @@
   "close":                false,
 
   "component-animations": true,
-  "dropdowns":            false,
+  "dropdowns":            true,
   "modals":               true,
-  "tooltip":              false,
+  "tooltip":              true,
   "popovers":             false,
   "carousel":             false,
   

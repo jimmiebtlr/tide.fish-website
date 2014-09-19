@@ -5,7 +5,7 @@ Meteor.startup(function () {
     //termsUrl: '/terms-of-use'         // if set adds link to terms  'you agree to ...' on sign-up page
     homeRoute: '/',                    // mandatory - path to redirect to after sign-out
     dashboardRoute: '/schedule',      // mandatory - path to redirect to after successful sign-in
-    profileRoute: '/profile',
+    profileRoute: '/schedule',
     passwordSignupFields: 'EMAIL_ONLY',
     //showSignupCode: true
     showOtherLoginServices: true,      // Set to false to hide oauth login buttons on the signin/signup pages. Useful if you are using something like accounts-meld or want to oauth for api access
@@ -34,6 +34,10 @@ Meteor.startup(function () {
   
   UI.registerHelper("ambiguousBoat", function(){
     return Boats.ambiguous( Meteor.userId() );
+  });
+  
+  UI.registerHelper("session", function(val){
+    return Session.get(val);
   });
 
   NotificationSettings.bookingSharingRequest = {

@@ -43,9 +43,10 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             {{#if currentUser}}
+              {{> boatMenu}}
               <li><a href="{{pathFor 'schedule'}}"><i class="fa fa-calendar-o">&nbsp;Schedule</i></a></li>
-              <li><a href="{{pathFor 'profile'}}"><i class="fa fa-user">&nbsp;Profile</i></a></li>
-              <li><a href="{{pathFor 'sharing'}}"><i class="fa fa-group">&nbsp;Sharing</i></a></li>
+              {{> navSharingLink}}
+              {{> navBoatEditLink}}
             {{/if}}
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -63,6 +64,47 @@
       {{/unless}}
     </div>
   </div>
+</template>
+
+<template name="navSharingLink">
+  {{#if ambiguousBoat}}
+    <li class="disabled">
+      <a href="" data-toggle="tooltip" title="Select an owned boat to access sharing."><i class="fa fa-group">&nbsp;Sharing</i></a>
+    </li>
+  {{else}}
+    <li><a href="{{pathFor 'sharing'}}"><i class="fa fa-group">&nbsp;Sharing</i></a></li>
+  {{/if}}
+</template>
+
+<template name="navBoatEditLink">
+  {{#if ambiguousBoat}}
+    <li class="disabled">
+      <a data-toggle="tooltip" title="Select an owned boat to access its details." class="" href=""><i class="fa fa-cog">&nbsp;Boat Details</i></a>
+    </li>
+  {{else}}
+    <li class=""><a class="editBoat" href=""><i class="fa fa-cog">&nbsp;Boat Details</i></a></li>
+  {{/if}}
+</template>
+
+<template name="boatMenu">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      {{label}}<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="" class="deselectBoat">All Boats</a></li>
+      <li class="divider"></li>
+      {{#each boats}}
+        <li>{{> boatMenuLineItem}}</li>
+      {{/each}}
+      <li class="divider"></li>
+      <li><a href="{{pathFor 'newBoat'}}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;New</button></a></li>
+    </ul>
+  </li>
+</template>
+
+<template name="boatMenuLineItem">
+  <a href="">{{name}}</a>
 </template>
 
 <template name="footer">
