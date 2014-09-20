@@ -4,48 +4,27 @@
   background-color: @gray;
   margin-bottom: 0px;
   padding: 0px;
-  color: white;
+  color: white; 
+  height: 600px;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
   #landingMarketingBackground{
     background-image: url("https://fish-booking-core.s3-us-west-2.amazonaws.com/test-home.jpg");
     background-size: cover;
     background-position: center center;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    @media (min-width: @screen-xs-min) {
-      width: 2000px;
-      height: 400px;
-      padding: 30px;
-    }
-    @media (min-width: @screen-sm-min) {
-      width: 2000px;
-      height: 400px;
-      padding: 30px;
-    }
-    @media (min-width: @screen-md-min) {
-      width: 2000px;
-      height: 400px;
-      padding: 30px;
-    }
-    @media (min-width: @screen-lg-min) {
-      width: 2000px;
-      height: 600px;
-      padding: 30px;
-    }
+    height: 600px;
   }
   #signUpForm{
-    height: auto;
+    strong::before,
+    strong::after{
+      background-color: rgba(0,0,0, 0.9); 
+    }
     color: @gray-lighter;
     background-color: @gray-dark;
     opacity: 0.93;
-    strong::before,
-    strong::after{
-      background-color: rgba(0,0,0, 1); 
-    }
+    padding-top: 20px;
+    padding-bottom: 20px;
     border-radius: 20px;
     #signUpFormContents{
-      margin-top: 20px;
-      margin-bottom: 20px;
       padding: 0px;
       margin-left: auto;
       margin-right: auto;
@@ -71,6 +50,9 @@
 #featurette-3{
   background-color: @gray-dark;
   color: @gray-lighter;
+}
+.featurette{
+  border-top: 1px;
 }
 
 
