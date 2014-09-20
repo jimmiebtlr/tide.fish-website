@@ -12,13 +12,6 @@
 
 @nav-height: 50px;
 
-//== Colors
-//
-//## Gray and brand colors for use across Bootstrap.
-@blue-dark:   #003173; 
-@blue:        lighten(@blue-dark, 33.5%);
-@blue-light:  lighten(@blue-dark, 46.5%);  
-@blue-lighter:  lighten(@blue-dark, 90.5%);  
 @light-color: lighten(@blue-dark, 93.5%);  
 
 @gray-darker:            lighten(#000, 13.5%); // #222
@@ -26,6 +19,12 @@
 @gray:                   lighten(#000, 33.5%); // #555
 @gray-light:             lighten(#000, 46.7%); // #777
 @gray-lighter:           lighten(#000, 93.5%); // #eee
+
+@blue: #428bca;
+@blue-darker:            darken(@blue, 30%); // #222
+@blue-dark:              darken(@blue, 15%);   // #333
+@blue-light:             lighten(@blue, 25%); // #777
+@blue-lighter:           lighten(@blue, 40%); // #eee
 
 @brand-primary:         #428bca;
 @brand-success:         #5cb85c;

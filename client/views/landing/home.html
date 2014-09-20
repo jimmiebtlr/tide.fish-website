@@ -1,32 +1,73 @@
 <template name="home">
-  <div class="jumbotron">
-    <h1>Start booking today.</h1>
-    <p class="lead">Free, Fast, Secure cloud booking for fishing charters.</p>
-    <p><a class="btn btn-lg btn-success" href="/sign-up" role="button">Sign Up Today</a></p>
+  <div id="landingMarketing">
+    <div id="landingMarketingBackground">
+      <div class="container">
+        <div class="col-md-7">
+          <h1>Scheduling for fishing charters.</h1>
+          <h2><span class="text-muted">Untangle your schedule</span></h2>
+          <h3>Great for</h3>
+          <ul>
+            <li>Captains</li>
+            <li>Marinas</li>
+            <li>Crews</li>
+          </ul>
+        </div>
+        <div class="col-md-5">
+          {{> signUpForm}}
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="row panel marketing">
-    <div class="col-lg-4">
-      <div class="marketing-icon">
-        <i class="fa fa-cloud fa-fw fa-5x text-center"></i>
-      </div>
-      <h2>Cloud</h2>
-      <p>Update your schedule from anywhere.  Allow others to view it.</p>
-      <p>Stored securely in the cloud, safe from disasters.</p>
+  <div class="marketing">
+    {{> featurette1}}
+    {{> featurette2}}
+    {{> featurette3}}
+  </div>
+
+
+</template>
+
+<template name="featurette1">
+  <div id="featurette-1" class="row featurette">
+    <div class="container">
+      <h2 class="featurette-heading">Manage your schedule anywhere.<span class="text-muted">Works on all your devices.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
     </div>
-    <div class="col-lg-4">
-      <div class="marketing-icon">
-        <i class="fa fa-calendar fa-fw fa-5x text-center"></i>
+    <div class="container">
+      <div class="col-md-3">
+        <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Phone">
       </div>
-      <h2>Simple</h2>
-      <p>No unneeded clutter, designed for fishing charters.  The features you need and nothing else.</p>
-   </div>
-    <div class="col-lg-4">
-      <div class="marketing-icon">
-        <i class="fa fa-search fa-fw fa-5x text-center"></i>
+      <div class="col-md-3">
+        <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Tablet">
       </div>
-      <h2>Coming Soon: SEO</h2>
-      <p>Let us find you new clients. Only clients that are interested in fishing on days that you are avaliable.</p>
+      <div class="col-md-3">
+        <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="PC">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="featurette2">
+  <div id="featurette-2" class="row featurette">
+    <div class="container">
+      <h2 class="featurette-heading">Share your schedule. <span class="text-muted"></span></h2>
+      <p class="lead">Allow others to view and manage your schedule.  Great when others may encounter potential customers.</p>
+    </div>
+    <div class="container">
+      <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+    </div>
+  </div>
+</template>
+
+<template name="featurette3">
+  <div id="featurette-3" class="row featurette">
+    <div class="container">
+      <h2 class="featurette-heading">Safe from disaster. <span class="text-muted">Securly stored in the cloud.</span></h2>
+      <p class="lead">Stored safely in the cloud, away from theft, fire, weather, and more.</p>
+    </div>
+    <div class="container">
+      <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
     </div>
   </div>
 </template>

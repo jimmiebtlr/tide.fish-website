@@ -2,19 +2,25 @@
 
 @import "custom.bootstrap.less";
 
-.panel {
-  padding: 20px;
-  background-color: @light-color; 
-}
-
-#contents{
-  margin-bottom: 20px;
+html,body{
+  padding: 0px;
+  margin: 0px;
 }
 
 html {
   background-size: cover;
   min-height: 100%;
   position: relative;
+}
+
+body {
+  height: auto !important;
+}
+
+#content{
+  background: @gray-lighter;
+  opacity: 0.96;
+  height: 100%;
 }
 
 @import "components/home.less";

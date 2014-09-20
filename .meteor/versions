@@ -5,11 +5,9 @@ accounts-oauth@1.1.0
 accounts-password@1.0.1
 accounts-ui-unstyled@1.1.1
 accounts-ui@1.1.0
-alanning:package-stubber@0.0.9
 aldeed:autoform@2.0.2
 aldeed:collection2@2.0.1
 aldeed:simple-schema@1.0.3
-amplify@1.0.0
 appcache@1.0.1
 application-configuration@1.0.2
 autoupdate@1.1.0
@@ -45,7 +43,7 @@ iron:dynamic-template@0.4.1
 iron:layout@0.4.1
 iron:router@0.9.3
 jimmiebtlr:bootstrap-wysihtml5@0.3.2
-jimmiebtlr:notifications@0.0.1-rc3
+jimmiebtlr:notifications@0.0.1-rc4
 jimmiebtlr:vertical@0.0.1
 joshowens:accounts-entry@0.9.0
 joshowens:simple-form@0.1.8
@@ -83,7 +81,6 @@ reactive-var@1.0.1
 reload@1.1.0
 retry@1.0.0
 routepolicy@1.0.1
-sanjo:jasmine@0.2.4
 service-configuration@1.0.1
 session@1.0.1
 sha@1.0.0
@@ -98,7 +95,5 @@ tracker@1.0.2
 ui@1.0.2
 underscore@1.0.0
 url@1.0.0
-velocity:core@0.2.0
-velocity:html-reporter@0.2.1
 webapp-hashing@1.0.0
 webapp@1.1.1

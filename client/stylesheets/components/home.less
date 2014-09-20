@@ -1,19 +1,96 @@
 @import "../custom.bootstrap.import.less";
 
-.jumbotron {
-  text-align: center;
-  background-color: transparent;
-}
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
+#landingMarketing{
+  background-color: @gray;
+  margin-bottom: 0px;
+  padding: 0px;
+  color: white;
+  #landingMarketingBackground{
+    background-image: url("https://fish-booking-core.s3-us-west-2.amazonaws.com/test-home.jpg");
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    @media (min-width: @screen-xs-min) {
+      width: 2000px;
+      height: 400px;
+      padding: 30px;
+    }
+    @media (min-width: @screen-sm-min) {
+      width: 2000px;
+      height: 400px;
+      padding: 30px;
+    }
+    @media (min-width: @screen-md-min) {
+      width: 2000px;
+      height: 400px;
+      padding: 30px;
+    }
+    @media (min-width: @screen-lg-min) {
+      width: 2000px;
+      height: 600px;
+      padding: 30px;
+    }
+  }
+  #signUpForm{
+    height: auto;
+    color: @gray-lighter;
+    background-color: @gray-dark;
+    opacity: 0.93;
+    strong::before,
+    strong::after{
+      background-color: rgba(0,0,0, 1); 
+    }
+    border-radius: 20px;
+    #signUpFormContents{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 280px;
+    }
+  }
+  .text-muted{
+    color: @gray-lighter;
+  }
 }
 
-.marketing i{
-  color: #424AFF;
+/*
+ * Marketing
+ */
+#featurette-1{
+  background-color: @gray-light;
+  color: @gray-lighter;
+}
+#featurette-2{
+  background-color: @blue-dark;
+  color: @gray-lighter;
+}
+#featurette-3{
+  background-color: @gray-dark;
+  color: @gray-lighter;
 }
 
-.marketing-icon {
-  text-align: center;
-  padding: 40px;
+
+@media (min-width: @screen-xs-min) {
+  .featurette{
+    padding: 30px;
+  }
+}
+@media (min-width: @screen-sm-min) {
+  .featurette{
+    padding: 30px;
+  }
+}
+@media (min-width: @screen-md-min) {
+  .featurette{
+    padding: 40px;
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .featurette{
+    padding: 50px;
+  }
 }

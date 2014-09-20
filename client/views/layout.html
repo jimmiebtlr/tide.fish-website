@@ -14,11 +14,23 @@
   {{/unless}}
 
   {{#unless isDisconnected}}
-    <div id="contents" class="container">
+    {{#unless withoutWrapper}}
+      <div class="container">
+        <div id="content">
+          <div class="row">
+            {{> yield}}
+          </div>
+        </div>
+      </div>
+    {{else}}
       {{> yield}}
-    </div>
+    {{/unless}}
   {{else}}
-    {{> disconnected}}
+    <div class="container">
+      <div id="content">
+        {{> disconnected}}
+      </div>
+    </div>
   {{/unless}}
 
   {{#unless hideFooter}}
@@ -125,7 +137,7 @@
 </template>
 
 <template name="disconnected">
-  <div id="disconnected" class="container panel">
+  <div id="disconnected">
     <div class="alert alert-danger text-center">
       <i class="fa fa-anchor fa-5x text-center"></i><br>
       <h1>You are not currently connected to this site.</h1>
