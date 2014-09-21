@@ -22,12 +22,8 @@ mrt:iron-router-progress
 meteorhacks:subs-manager
 accounts-google
 accounts-facebook
-force-ssl
 meteorhacks:kadira
 jimmiebtlr:vertical@0.0.1
 splendido:accounts-emails-field@1.0.3
 jimmiebtlr:notifications
 aldeed:autoform@2.0.2
-velocity:html-reporter
-sanjo:jasmine
-

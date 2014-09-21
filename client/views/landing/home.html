@@ -1,32 +1,83 @@
 <template name="home">
-  <div class="jumbotron">
-    <h1>Start booking today.</h1>
-    <p class="lead">Free, Fast, Secure cloud booking for fishing charters.</p>
-    <p><a class="btn btn-lg btn-success" href="/sign-up" role="button">Sign Up Today</a></p>
-  </div>
+  {{> landingSplash}}
 
-  <div class="row panel marketing">
-    <div class="col-lg-4">
-      <div class="marketing-icon">
-        <i class="fa fa-cloud fa-fw fa-5x text-center"></i>
+  <div id="container-fluid">
+    {{> featurette1}}
+    {{> featurette2}}
+    {{> featurette3}}
+  </div>
+</template>
+
+<template name="landingSplash">
+  <div id="landingMarketing">
+    <div id="landingMarketingBackground">
+      <div id="landingSplashContainer" class="container">
+        <div class="row">
+          <div id="greatFor" class="col-md-7">
+            <h1><strong>Scheduling for<br>fishing charters.</strong></h1>
+            <h2><span class="text-muted">Untangle your schedule</span></h2>
+            <h3>Great for</h3>
+            <ul>
+              <li>Captains</li>
+              <li>Marinas</li>
+              <li>Crews</li>
+            </ul>
+          </div>
+          <div id="signUpWrapper">
+            <div id="signUpWrapper2">
+              {{> signUpForm}}
+            </div>
+          </div>
+        </div>
       </div>
-      <h2>Cloud</h2>
-      <p>Update your schedule from anywhere.  Allow others to view it.</p>
-      <p>Stored securely in the cloud, safe from disasters.</p>
     </div>
-    <div class="col-lg-4">
-      <div class="marketing-icon">
-        <i class="fa fa-calendar fa-fw fa-5x text-center"></i>
+  </div>
+</template>
+
+<template name="featurette1">
+  <div id="featurette-1" class="featurette">
+    <div class="container">
+      <h2 class="featurette-heading">Manage your schedule anywhere.  <span class="text-muted">Works on all your devices.</span></h2>
+      <p class="lead">Designed with tablets, phones and your laptop in mind.  Works on Mac, PC, Android and more.  As well as in low bandwidth conditions.</p>
+    </div>
+    <div class="container">
+      <div class="col-md-2">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/phone.svg" alt="phone" onerror="this.onerror=null; this.src='https://fish-booking-core.s3-us-west-2.amazonaws.com/phone.png'">
       </div>
-      <h2>Simple</h2>
-      <p>No unneeded clutter, designed for fishing charters.  The features you need and nothing else.</p>
-   </div>
-    <div class="col-lg-4">
-      <div class="marketing-icon">
-        <i class="fa fa-search fa-fw fa-5x text-center"></i>
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/tablet.svg" alt="tablet" onerror="this.onerror=null; this.src='https://fish-booking-core.s3-us-west-2.amazonaws.com/tablet.png'">
       </div>
-      <h2>Coming Soon: SEO</h2>
-      <p>Let us find you new clients. Only clients that are interested in fishing on days that you are avaliable.</p>
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/laptop.svg" alt="laptop" onerror="this.onerror=null; this.src='https://fish-booking-core.s3-us-west-2.amazonaws.com/laptop.png'">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="featurette2">
+  <div id="featurette-2" class="featurette">
+    <div class="container">
+      <div class="col-12">
+        <h2 class="featurette-heading">Share your schedule. <span class="text-muted"></span></h2>
+        <p class="lead">Allow others to view and manage your schedule.  Great when others help manage customers.</p>
+      </div>
+      <div class="col-12">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/sharing.png" alt="Sharing">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="featurette3">
+  <div id="featurette-3" class="featurette">
+    <div class="container">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Safe from disaster. <span class="text-muted">Securly stored in the cloud.</span></h2>
+        <p class="lead">Stored safely in the cloud, away from theft, fire, and weather.</p>
+      </div>
+      <div class="col-md-5">
+        <i class="fa fa-lock"></i>
+      </div>
     </div>
   </div>
 </template>

@@ -26,6 +26,7 @@ describe("Boat", function(){
       expect( Boats.insert({}) ).toThrow();
     });
   });
+/*
   describe("update", function(){
     beforeEach( function(){
       Boats.insert({name: "Test"});
@@ -41,5 +42,5 @@ describe("Boat", function(){
     beforeEach( function(){
       Boats.insert({name: "Test"});
     });
-  });
+  });*/
 });

@@ -19,7 +19,14 @@ var permSubsList = function(){
 
 Router.onBeforeAction('loading');
 
-Router.map(function() {
+Router.onRun(function(){
+  Session.set("wrapLayout",true);
+}, {except:['home','welcome']});
+Router.onRun(function(){
+  Session.set("wrapLayout",false);
+}, {only:['home','welcome']});
+
+Router.map(function(){
   this.route('home', {
     path: '/',
     template: 'home',
