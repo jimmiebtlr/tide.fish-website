@@ -14,7 +14,9 @@ Template.scheduleDetails.dateFuture = futureSelected;
 /*
  * Boat Line Item
  */
-Template.scheduleBoatLineItem.newForm = function(){ return Session.get("schedule-editBoat") === this._id && !Session.get("schedule-editBooking") && futureSelected(); }
+Template.scheduleBoatLineItem.newForm = function(){ 
+  return ((Session.get("schedule-editBoat") === this._id && !Session.get("schedule-editBooking")) || !Boats.ambiguous()) && futureSelected(); 
+}
 
 Template.scheduleBoatLineItem.dateFuture = futureSelected;
 

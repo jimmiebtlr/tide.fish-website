@@ -1,107 +1,129 @@
 @import "../custom.bootstrap.import.less";
-@import "custom.bootstrap.mixins.import.less";
-
-#landingSplash{
-  height: 600px;
-  #landingSplashRow{
-    .make-row();
-  }
-}
 
 #landingMarketing{
   background-color: @gray;
   margin-bottom: 0px;
   padding: 0px;
   color: white; 
-  height: 600px;
+
   text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
   .row{
     height: 100%;
   }
-  #landingMarketingBackground{
-    background-image: url("https://fish-booking-core.s3-us-west-2.amazonaws.com/test-home.jpg");
-    background-size: cover;
-    background-position: center center;
-    height: 100%;
-  }
-
-  #landingSplashContainer{
-    height: inherit;
-    float: none;
-  }
-  #signUpWrapper{
-    .make-md-column(5);
-    height: 100%;
-    float: none;
-    vertical-align: middle;
-    display: inline-block;
-    margin-right: -4px;
-  }
-  #signUpForm{
-    float: none;
-    vertical-align: middle;
-    display: inline-block;
-    margin-right: -4px;
-    #signUpFormContents{
-      color: @gray-lighter;
-      background-color: @gray-dark;
-      opacity: 0.93;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      border-radius: 20px;
-      strong::before,
-      strong::after{
-        background-color: rgba(0,0,0,0); 
-      }
-      padding: 0px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 280px;
-    }
-  }
   .text-muted{
     color: @gray-lighter;
   }
+  @media (min-width: @screen-md-min) {
+    height: 600px;
+  }
+  @media (min-width: @screen-lg-min) {
+    height: 600px;
+  }
+}
+
+#greatFor{
+  margin-top: 75px;
+  h1{
+    font-size: 60px;
+  }
+  h2{
+    font-size: 45px;
+  }
+  h3{
+    font-size: 35px;
+  }
+  li{
+    font-size: 2em;
+  }
+}
+
+#landingMarketingBackground{
+  background-image: url("https://fish-booking-core.s3-us-west-2.amazonaws.com/homeSplash.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+}
+
+#landingSplashContainer{
+  height: inherit;
+  float: none;
+}
+#signUpWrapper{
+  .make-md-column-offset(1);
+  .make-md-column(4);
+  .make-xs-column(12);
+  height: 100%;
+  display:table;
+  padding: 0px;
+  margin: 0px;
+}
+#signUpWrapper2{
+  vertical-align:middle;
+  float:none;
+  display:table-cell;
+}
+#signUpForm{
+  align: center;
+  strong::before,
+  strong::after{
+    background-color: rgba(0,0,0,0); 
+  }
+  color: @gray-lighter;
+  background-color: @gray-dark;
+  opacity: 0.93;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  @media (min-width: @screen-md-min) {
+    width: auto;
+    border-radius: 20px;
+  }
+}
+
+#signUpFormContents{
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
 }
 
 /*
  * Marketing
  */
-
 #featurette-1{
-  background-color: @gray-light;
-  color: @gray-lighter;
+  background-color: white;
+  color: @gray-darker;
 }
 #featurette-2{
-  background-color: @blue-dark;
+  background-color: @blue;
   color: @gray-lighter;
+  .text-muted{
+    color: @gray-darker;
+  }
 }
 #featurette-3{
   background-color: @gray-dark;
   color: @gray-lighter;
 }
 .featurette{
+  text-align: center;
+  align: center;
   border-top: 1px;
-}
-
-
-@media (min-width: @screen-xs-min) {
-  .featurette{
-    padding: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  @media (min-width: @screen-md-min) {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
-}
-@media (min-width: @screen-sm-min) {
-  .featurette{
-    padding: 30px;
+  @media (min-width: @screen-lg-min) {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
-}
-@media (min-width: @screen-md-min) {
-  .featurette{
-    padding: 40px;
+  i{
+    font-size: 150px;
   }
-}
-@media (min-width: @screen-lg-min) {
-  .featurette{
-    padding: 50px;
+  img{
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
   }
 }
