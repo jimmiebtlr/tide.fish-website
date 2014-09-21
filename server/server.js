@@ -1,6 +1,6 @@
 // Keepalive hack
-process.argv = _.without(process.argv, '--keepalive');
-Meteor.startup(function () { console.log("LISTENING"); });
+//process.argv = _.without(process.argv, '--keepalive');
+//Meteor.startup(function () { console.log("LISTENING"); });
 
 //Kadira.connect('3Jqsd2Qz6QFaBPC34', '155571df-d574-4d14-aa34-a7a5c8dfff40');
 

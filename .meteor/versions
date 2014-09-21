@@ -5,6 +5,7 @@ accounts-oauth@1.1.0
 accounts-password@1.0.1
 accounts-ui-unstyled@1.1.1
 accounts-ui@1.1.0
+alanning:package-stubber@0.0.9
 aldeed:autoform@2.0.2
 aldeed:collection2@2.0.1
 aldeed:simple-schema@1.0.3
@@ -81,6 +82,7 @@ reactive-var@1.0.1
 reload@1.1.0
 retry@1.0.0
 routepolicy@1.0.1
+sanjo:jasmine@0.3.0
 service-configuration@1.0.1
 session@1.0.1
 sha@1.0.0
@@ -95,5 +97,6 @@ tracker@1.0.2
 ui@1.0.2
 underscore@1.0.0
 url@1.0.0
+velocity:core@0.2.0
 webapp-hashing@1.0.0
 webapp@1.1.1
