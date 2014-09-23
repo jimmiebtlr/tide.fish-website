@@ -78,7 +78,6 @@ Router.map(function(){
     template: 'sharing',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
-      if( Boats.selected() === undefined ){ Router.go('schedule'); };
       return permSubsList();
     },
     onAfterAction: function(){
@@ -104,7 +103,7 @@ Router.map(function(){
       return permSubsList();
     },
     onBeforeAction: function(){
-      Boats.setSelected();
+      Session.set('selectedBoat',undefined);
     },
     onAfterAction: function(){
       GAnalytics.pageview("/boats/new");
@@ -118,7 +117,7 @@ Router.map(function(){
       return permSubsList();
     },
     onBeforeAction: function(){
-      Boats.setSelected( this.params._id );
+      Session.set('selectedBoat',this.params._id);
     },
     onAfterAction: function(){
       GAnalytics.pageview("/boats/edit");
