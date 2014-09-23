@@ -21,32 +21,15 @@ Router.onBeforeAction('loading');
 
 Router.onRun(function(){
   Session.set("wrapLayout",true);
-}, {except:['home','welcome']});
+}, {except:['home','entrySignUp','entrySignIn']});
 Router.onRun(function(){
   Session.set("wrapLayout",false);
-}, {only:['home','welcome']});
+}, {only:['home','entrySignUp','entrySignIn']});
 
 Router.map(function(){
   this.route('home', {
     path: '/',
     template: 'home',
-    onAfterAction: function() {
-      SEO.set({
-        title: "Tide.Fish - Cloud Booking for Charter Fishing",
-        meta: {
-          'description':"Tide.Fish - Cloud Booking for Charter Fishing"
-        },
-        og: {
-          'title': "Tide.Fish - Cloud Booking for Charter Fishing",
-          'description': "Tide.Fish - Cloud Booking for Charter Fishing"
-        }
-      });
-      GAnalytics.pageview("/");
-      permSubsList();
-    }
-  });
-  this.route('welcome', {
-    path: 'welcome',
     onAfterAction: function() {
       SEO.set({
         title: "Tide.Fish - Cloud Booking for Charter Fishing",
