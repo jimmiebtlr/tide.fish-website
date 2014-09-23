@@ -5,6 +5,10 @@ Template.layout.hideNav = function(){
   return Session.get('hideNav');
 }
 
+Template.layout.withoutWrapper = function(){
+  return !Session.get("wrapLayout");
+}
+
 Template.layout.hideFooter = function(){
   return Session.get('hideFooter');
 }
@@ -29,6 +33,6 @@ Router.onAfterAction( function(){
 Template.footer.rendered = function(){
   if( Session.get('hideFooter') === undefined ){
     var footerHeight = $("#footer").outerHeight();
-    $("body").css("margin-bottom", footerHeight);
+    $("body").css("padding-bottom", footerHeight);
   }
 }

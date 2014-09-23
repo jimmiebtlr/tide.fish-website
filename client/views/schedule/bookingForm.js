@@ -46,14 +46,9 @@ Template.calBookingForm.editDoc = function(){
 AutoForm.addHooks(['calBookingForm'],{
   before: {
     insert: function(doc, template) {
-      var boat = Boats.findOne({'ownerId': Meteor.userId()});
-      if( Boats.ambiguous( Meteor.userId() ) ){
-        doc.boatId = Session.get("schedule-editBoat");
-      }else{
-        doc.boatId = Boats.related( Meteor.userId() ).fetch()[0]._id;
-      }
-      doc.date = new Date(Session.get('vertiCalSelectedDate'));
-      doc.ownerId = boat.ownerId;
+      doc.boatId = Boats.ambiguous ? Session.get("schedule-editBoat") : Boats.selected()._id;
+      doc.startDate = new Date(Session.get('vertiCalSelectedDate'));
+      doc.endDate = new Date(Session.get('vertiCalSelectedDate'));
       doc.external = true;
       return doc;
     },
@@ -64,20 +59,18 @@ AutoForm.addHooks(['calBookingForm'],{
   after: {
     insert: function( err ){
       if( err === undefined ){
-        Notifications.success("Booking added successfully");
         Session.set("schedule-editBoat",undefined);
         Session.set("schedule-editBooking",undefined);
       }else{
-        //Notify.error(err.toString() );
+        console.log( err );
       }
     },
     update: function( err ){
       if( err === undefined ){
-        Notifications.success("Booking updated successfully");
         Session.set("schedule-editBoat",undefined);
         Session.set("schedule-editBooking",undefined);
       }else{
-        //Notify.error(err.toString() );
+        console.log( err );
       }
     }
   }

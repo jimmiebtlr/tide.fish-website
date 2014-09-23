@@ -1,0 +1,23 @@
+<template name="navSharingLink">
+  {{#if disabled}}
+    <li class="disabled">
+      <a href="" data-toggle="tooltip" title="{{disabledReason}}"><i class="fa fa-group">&nbsp;Sharing</i></a>
+    </li>
+  {{else}}
+    <li><a href="{{pathFor 'sharing'}}"><i class="fa fa-group">&nbsp;Sharing</i></a></li>
+  {{/if}}
+</template>
+
+<template name="navBoatDetailsLink">
+  {{#if disabled}}
+    <li class="disabled">
+      <a data-toggle="tooltip" title="{{disabledReason}}" class="" href=""><i class="fa fa-cog">&nbsp;Boat Details</i></a>
+    </li>
+  {{else}}
+  <li class=""><a class="editBoat" href="{{pathFor 'boatDetails'}}"><i class="fa fa-cog">&nbsp;Boat Details</i></a></li>
+  {{/if}}
+</template>
+
+<template name="navScheduleLink">
+  <li><a href="{{pathFor 'schedule'}}"><i class="fa fa-calendar-o">&nbsp;Schedule</i></a></li>
+</template>

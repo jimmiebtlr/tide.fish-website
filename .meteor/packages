@@ -2,8 +2,6 @@ standard-app-packages
 iron:router
 less
 aldeed:simple-schema
-aldeed:collection2
-aldeed:autoform
 accounts-base
 accounts-password
 accounts-ui
@@ -23,8 +21,11 @@ mrt:iron-router-progress
 meteorhacks:subs-manager
 accounts-google
 accounts-facebook
-splendido:accounts-emails-field
-force-ssl
 meteorhacks:kadira
 jimmiebtlr:vertical@0.0.1
+splendido:accounts-emails-field@1.0.3
 jimmiebtlr:notifications
+aldeed:autoform@2.0.2
+aldeed:collection2@2.1.0
+audit-argument-checks
+

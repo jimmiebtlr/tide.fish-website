@@ -12,7 +12,6 @@ Router.configure({
 
 var permSubsList = function(){
   return [
-    permSubs.subscribe('Notifications'),
     permSubs.subscribe('RelatedBoats'),
     permSubs.subscribe('TripLengths')
   ];
@@ -20,27 +19,17 @@ var permSubsList = function(){
 
 Router.onBeforeAction('loading');
 
-Router.map(function() {
+Router.onRun(function(){
+  Session.set("wrapLayout",true);
+}, {except:['home','entrySignUp','entrySignIn']});
+Router.onRun(function(){
+  Session.set("wrapLayout",false);
+}, {only:['home','entrySignUp','entrySignIn']});
+
+Router.map(function(){
   this.route('home', {
     path: '/',
     template: 'home',
-    onAfterAction: function() {
-      SEO.set({
-        title: "Tide.Fish - Cloud Booking for Charter Fishing",
-        meta: {
-          'description':"Tide.Fish - Cloud Booking for Charter Fishing"
-        },
-        og: {
-          'title': "Tide.Fish - Cloud Booking for Charter Fishing",
-          'description': "Tide.Fish - Cloud Booking for Charter Fishing"
-        }
-      });
-      GAnalytics.pageview("/");
-      permSubsList();
-    }
-  });
-  this.route('welcome', {
-    path: 'welcome',
     onAfterAction: function() {
       SEO.set({
         title: "Tide.Fish - Cloud Booking for Charter Fishing",
@@ -67,27 +56,6 @@ Router.map(function() {
       GAnalytics.pageview("/calendar");
     }
   });
-  this.route('newBooking', {
-    path: '/bookings/new',
-    template: 'bookingForm',
-    onBeforeAction: function(){
-      AccountsEntry.signInRequired(this);
-    },
-    onAfterAction: function(){
-      permSubsList();
-    },
-  });
-  this.route('profile', {
-    path: '/profile',
-    template: 'profile',
-    waitOn: function(){
-      AccountsEntry.signInRequired(this);
-      return permSubsList();
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/profile");
-    }
-  });
   this.route('sharing', {
     path: '/sharing',
     template: 'sharing',
@@ -97,6 +65,56 @@ Router.map(function() {
     },
     onAfterAction: function(){
       GAnalytics.pageview("/sharing");
+    }
+  });
+  this.route('boats', {
+    path: '/boats',
+    template: 'boats',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats");
+    }
+  });
+  this.route('newBoat', {
+    path: '/boats/new',
+    template: 'boatForm',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onBeforeAction: function(){
+      Session.set('selectedBoat',undefined);
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/new");
+    }
+  });
+  this.route('boatDetails', {
+    path: '/boats/edit',
+    template: 'boatDetails',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/edit");
+    }
+  });
+  this.route('editBoat', {
+    path: '/boats/:_id',
+    template: 'boatForm',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onBeforeAction: function(){
+      Session.set('selectedBoat',this.params._id);
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/edit");
     }
   });
 }); 

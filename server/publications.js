@@ -4,11 +4,14 @@ Meteor.publish('TripLengths', function(){
 
 Meteor.publish('RelatedBoats', function(){
   if( !this.userId ){ return null; }
-  var userIds = Boats.owned(this.userId).allowedBookingUsers;
-  if( userIds !== undefined && userIds.length > 0 ){
+  var userIds = [];
+  _.each(Boats.owned(this.userId).fetch(), function(b){
+    userIds = userIds.concat( b.allowedBookingUsers );
+  });
+  if( userIds.length > 0 ){
     return [
-      Boats.related( this.userId ),
-      Meteor.users.find({'_id': {$in: Boats.owned(this.userId).allowedBookingUsers}})
+      Meteor.users.find({'_id': {$in: userIds}}),
+      Boats.related( this.userId )
     ];
   }else{
     return Boats.related( this.userId );
