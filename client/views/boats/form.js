@@ -1,3 +1,10 @@
+Template.boatDetails.owned = function(){
+  if( Boats.selected() && Boats.selected().ownerId === Meteor.userId() ){
+    return true;
+  }
+  return false;
+}
+
 Template.boatForm.editDoc = Boats.selected;
 
 Template.boatForm.disabled = function(){ 
@@ -42,6 +49,15 @@ AutoForm.addHooks(['boatForm'],{
       }else{
         console.log("Error: " + err);
       }
+    }
+  }
+});
+
+Template.boatFormRemove.events({
+  'click .remove': function(){
+    if( confirm("Are you sure you would like to permenantly delete this boat?") ){
+      Boats.remove( Boats.selected()._id );
+      Router.go( AccountsEntry.settings.dashboardRoute );
     }
   }
 });

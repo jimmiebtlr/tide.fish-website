@@ -15,32 +15,34 @@
 </template>
 
 <template name="scheduleBoatLineItem">
-  <div id="boat-{{_id}}" class="well">
+  <div id="boat-{{_id}}" class="panel panel-default">
     {{#if ambiguousBoat}}
-      <legend>{{name}}
+      <div class="panel-heading">
+        {{name}}
         {{#if dateFuture}} 
           <button type="button" class="btn btn-default new-btn btn-xs pull-right"><i class="fa fa-edit"></i>&nbsp;New</button>
         {{/if}}
-      </legend>
-    {{/if}}
-    
-    {{#if newForm}}
-      <div class="well">
-        {{>calBookingForm}}
       </div>
     {{/if}}
-    
-    {{#if bookings}}
-      {{#each bookings}}
-        {{> scheduleBookingLineItem}}    
-      {{/each}}
-    {{/if}}
+    <div class="panel-body">
+      {{#if newForm}}
+        <div class="well">
+          {{>calBookingForm}}
+        </div>
+      {{/if}}
+      
+      {{#if bookings}}
+        {{#each bookings}}
+          {{> scheduleBookingLineItem}}    
+        {{/each}}
+      {{/if}}
 
-    {{#unless bookings}}
-      {{#unless newForm}}
-        None scheduled
+      {{#unless bookings}}
+        {{#unless newForm}}
+          None scheduled
+        {{/unless}}
       {{/unless}}
-    {{/unless}}
+    </div>
   </div>
 </template>
 

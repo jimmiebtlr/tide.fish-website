@@ -92,6 +92,17 @@ Router.map(function(){
       GAnalytics.pageview("/boats/new");
     }
   });
+  this.route('boatDetails', {
+    path: '/boats/edit',
+    template: 'boatDetails',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    },
+    onAfterAction: function(){
+      GAnalytics.pageview("/boats/edit");
+    }
+  });
   this.route('editBoat', {
     path: '/boats/:_id',
     template: 'boatForm',

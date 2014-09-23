@@ -1,12 +1,39 @@
-<template name="boatForm">
+<template name="boatDetails">
   <div class="col-md-offset-2 col-md-8">
-    <legend>{{title}}</legend>
-    {{#autoForm collection="Boats" id="boatForm" doc=editDoc type=formMode}}
-      <fieldset data-toggle="tooltip" title="Only the boat owner can modify the form.">
-        {{> afQuickField name='name' required="true"}}
-        {{> afQuickField name='capacity'}}
-      </fieldset>
-      <button type="submit" class="btn btn-primary {{disabled}}"><i class="fa fa-edit"></i>&nbsp;Save</button>
-    {{/autoForm}}
+    {{> boatForm}}
+  </div>
+  <div class="col-md-offset-2 col-md-8">
+    {{#if owned }}
+      {{> boatFormRemove}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="boatForm">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{title}}
+    </div>
+    <div class="panel-body">
+      {{#autoForm collection="Boats" id="boatForm" doc=editDoc type=formMode}}
+        <fieldset data-toggle="tooltip" title="Only the boat owner can modify the form.">
+          {{> afQuickField name='name' required="true"}}
+          {{> afQuickField name='capacity'}}
+        </fieldset>
+        <button type="submit" class="btn btn-primary {{disabled}}"><i class="fa fa-edit"></i>&nbsp;Save</button>
+      {{/autoForm}}
+    </div>
+  </div>
+</template>
+
+<template name="boatFormRemove">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      Remove Boat
+    </div>
+    <div class="panel-body">
+      <p>The following will permenantly and irreveribly remove the boat.  Please be sure.</p>
+      <button class="btn btn-danger remove"><i class="fa fa-trash">&nbsp;Remove</i></button>
+    </div>
   </div>
 </template>
