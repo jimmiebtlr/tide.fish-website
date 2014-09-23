@@ -21,10 +21,10 @@ Router.onBeforeAction('loading');
 
 Router.onRun(function(){
   Session.set("wrapLayout",true);
-}, {except:['home','welcome']});
+}, {except:['home','entrySignUp','entrySignIn']});
 Router.onRun(function(){
   Session.set("wrapLayout",false);
-}, {only:['home','welcome']});
+}, {only:['home','entrySignUp','entrySignIn']});
 
 Router.map(function(){
   this.route('home', {
