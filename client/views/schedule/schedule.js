@@ -22,9 +22,7 @@ Template.scheduleBoatLineItem.dateFuture = futureSelected;
 
 Template.scheduleBoatLineItem.bookings = function(){ 
   var date = moment(Session.get('vertiCalSelectedDate'), "MM/DD/YYYY");
-  var dateStart = date.clone().startOf("day").utc();
-  var dateEnd = date.clone().endOf("day").utc();
-  return Bookings.find({'date': {$gte: dateStart.toDate(), $lte: dateEnd.toDate()}, 'boatId': this._id}).fetch();
+  return Bookings.byDateAndBoat( date, this._id).fetch();
 }
 
 Template.scheduleBoatLineItem.events = {

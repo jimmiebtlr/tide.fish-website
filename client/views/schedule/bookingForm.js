@@ -46,12 +46,9 @@ Template.calBookingForm.editDoc = function(){
 AutoForm.addHooks(['calBookingForm'],{
   before: {
     insert: function(doc, template) {
-      if( Boats.ambiguous( Meteor.userId() ) ){
-        doc.boatId = Session.get("schedule-editBoat");
-      }else{
-        doc.boatId = Boats.selected()._id;
-      }
-      doc.date = new Date(Session.get('vertiCalSelectedDate'));
+      doc.boatId = Boats.ambiguous ? Session.get("schedule-editBoat") : Boats.selected()._id;
+      doc.startDate = new Date(Session.get('vertiCalSelectedDate'));
+      doc.endDate = new Date(Session.get('vertiCalSelectedDate'));
       doc.external = true;
       return doc;
     },
