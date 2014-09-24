@@ -55,7 +55,7 @@ Template.signUpForm.events({
         password: $('#password').val()
       });
       Meteor.loginWithPassword($('#email').val(), $('#password').val());
-      Router.go('/calendar');
+      Router.go( AccountsEntry.settings.dashboardRoute );
       GAnalytics.event("account","home-signUp-Success");
     }else{
       GAnalytics.event("account","home-signUp-Failed");
