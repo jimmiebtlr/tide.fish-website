@@ -19,5 +19,12 @@
 </template>
 
 <template name="navScheduleLink">
-  <li><a href="{{pathFor 'schedule'}}"><i class="fa fa-calendar-o">&nbsp;Schedule</i></a></li>
+  {{#if disabled}}
+    <li class="disabled">
+      <a data-toggle="tooltip" title="{{disabledReason}}"><i class="fa fa-calendar-o">&nbsp;Schedule</i></a>
+    </li>
+  {{else}}
+    <li><a href="{{pathFor 'schedule'}}"><i class="fa fa-calendar-o">&nbsp;Schedule</i></a></li>
+  {{/if}}
+
 </template>

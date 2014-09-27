@@ -1,0 +1,23 @@
+<template name="newUserOrientation">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>
+      Welcome, to get started you may either create a boat or wait for another user to share theirs with you.
+    </h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Create a Boat
+      </div>
+      <div class="panel-body">
+        <a href="{{pathFor 'newBoat'}}"><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;Create Boat</button></a>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Sharing
+      </div>
+      <div class="panel-body">
+        In order for another user to share their boat with you they will need the email you registered with.  It looks like it is <strong>{{email}}</strong>.
+      </div>
+    </div>
+  </div>
+</template>

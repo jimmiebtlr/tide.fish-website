@@ -22,3 +22,7 @@ Meteor.publish('Bookings', function(){
   if( !this.userId ){ return null; }
   return Bookings.find({'boatId': {$in: Boats.relatedIds(this.userId)}});
 });
+
+Meteor.publish('User', function(){
+  return Meteor.users.find({'_id': this.userId });
+});
