@@ -13,7 +13,8 @@ Router.configure({
 var permSubsList = function(){
   return [
     permSubs.subscribe('RelatedBoats'),
-    permSubs.subscribe('TripLengths')
+    permSubs.subscribe('TripLengths'),
+    permSubs.subscribe('User')
   ];
 };
 
@@ -116,5 +117,19 @@ Router.map(function(){
     onAfterAction: function(){
       GAnalytics.pageview("/boats/edit");
     }
+  });
+  this.route('loginRouting', {
+    onBeforeAction: function(pause){
+      if( Boats.related().count() > 0 ){
+        pause();
+        Router.go('schedule');
+      }else{
+        pause();
+        Router.go('newUserOrientation');
+      }
+    }
+  });
+  this.route('newUserOrientation', {
+
   });
 }); 
