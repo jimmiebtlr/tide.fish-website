@@ -1,0 +1,111 @@
+<template name="landing2">
+  <div id="landing2">
+    {{> landing2Splash}}
+    {{> smallSections}}
+    <div id="container-fluid">
+      {{> landing2featurette1}}
+      {{> landing2featurette2}}
+      {{> landing2featurette3}}
+    </div>
+  </div>
+</template>
+
+<template name="landing2Splash">
+  <div id="landingMarketing">
+    <div id="landingMarketingBackground">
+      <div id="landingSplashContainer" class="container">
+        <div class="row">
+          <div id="greatFor" class="col-md-7">
+            <h1><strong>Free Scheduling for<br>fishing charters.</strong></h1>
+            <h2><span class="text-muted">Share and manage your schedule from anywhere.</span></h2>
+            <h3>Great for</h3>
+            <ul>
+              <li>Captains</li>
+              <li>Marinas</li>
+              <li>Crews</li>
+            </ul>
+          </div>
+          <div id="signUpWrapper">
+            <div id="signUpWrapper2">
+              {{> landing2signUpForm}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="smallSections">
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <i class="fa fa-group fa-5x"></i>
+      <span class="smallSectionText">
+        Share
+      </span>
+    </div>
+    <div class="col-md-4">
+      <i class="fa fa-lock fa-5x"></i>
+      <span class="smallSectionText">
+        Secure
+      </span>
+    </div>
+    <div class="col-md-4">
+      <div class="smallSectionText">
+        <i class="fa fa-gift fa-5x"></i>
+        <span class="smallSectionText">
+          Free
+          Let us handle finding new clients.
+        </span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="landing2featurette1">
+  <div id="featurette-1" class="featurette">
+    <div class="container">
+      <h2 class="featurette-heading">Manage your schedule anywhere.  <span class="text-muted">Works on all your devices.</span></h2>
+      <p class="lead">Designed with tablets, phones and your laptop in mind.  Works on Mac, PC, Android and more.  As well as in low bandwidth conditions.</p>
+    </div>
+    <div class="container">
+      <div class="col-md-2">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/phone.svg" alt="phone" onerror="this.onerror=null; this.src='https://fish-booking-core.s3-us-west-2.amazonaws.com/phone.png'">
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/tablet.svg" alt="tablet" onerror="this.onerror=null; this.src='https://fish-booking-core.s3-us-west-2.amazonaws.com/tablet.png'">
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/laptop.svg" alt="laptop" onerror="this.onerror=null; this.src='https://fish-booking-core.s3-us-west-2.amazonaws.com/laptop.png'">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="landing2featurette2">
+  <div id="featurette-2" class="featurette">
+    <div class="container">
+      <div class="col-12">
+        <h2 class="featurette-heading">Share your schedule. <span class="text-muted"></span></h2>
+        <p class="lead">Allow others to view and manage your schedule.  Great when others help manage customers.</p>
+      </div>
+      <div class="col-12">
+        <img class="featurette-image img-responsive" src="https://fish-booking-core.s3-us-west-2.amazonaws.com/sharing.png" alt="Sharing">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="landing2featurette3">
+  <div id="featurette-3" class="featurette">
+    <div class="container">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Safe from disaster. <span class="text-muted">Securly stored in the cloud.</span></h2>
+        <p class="lead">Stored safely in the cloud, away from theft, fire, and weather.</p>
+      </div>
+      <div class="col-md-5">
+        <i class="fa fa-lock"></i>
+      </div>
+    </div>
+  </div>
+</template>

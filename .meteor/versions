@@ -43,7 +43,7 @@ iron:dynamic-template@0.4.1
 iron:layout@0.4.1
 iron:router@0.9.3
 jimmiebtlr:bootstrap-wysihtml5@0.3.2
-jimmiebtlr:notifications@0.0.1-rc4
+jimmiebtlr:notifications@0.0.2-rc.1
 jimmiebtlr:vertical@0.0.1
 joshowens:accounts-entry@0.9.0
 joshowens:simple-form@0.1.8
