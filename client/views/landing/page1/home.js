@@ -1,5 +1,4 @@
 Template.home.created = function(){
-  GAnalytics.pageview();
   Session.set('buttonText', "up");
 }
 
