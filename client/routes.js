@@ -19,6 +19,7 @@ var permSubsList = function(){
 };
 
 Router.onBeforeAction('loading');
+Router.onAfterAction( function(){ GAnalytics.pageview(Router.current().path); });
 
 Router.onRun(function(){
   Session.set("wrapLayout",true);
@@ -42,7 +43,6 @@ Router.map(function(){
           'description': "Tide.Fish - Cloud Booking for Charter Fishing"
         }
       });
-      GAnalytics.pageview("/");
       permSubsList();
     }
   });
@@ -52,9 +52,6 @@ Router.map(function(){
     waitOn: function(){
       AccountsEntry.signInRequired(this);
       return [permSubsList(),tmpSubs.subscribe('Bookings')];
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/calendar");
     }
   });
   this.route('sharing', {
@@ -63,10 +60,7 @@ Router.map(function(){
     waitOn: function(){
       AccountsEntry.signInRequired(this);
       return permSubsList();
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/sharing");
-    }
+    }  
   });
   this.route('boats', {
     path: '/boats',
@@ -74,10 +68,7 @@ Router.map(function(){
     waitOn: function(){
       AccountsEntry.signInRequired(this);
       return permSubsList();
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/boats");
-    }
+    }  
   });
   this.route('newBoat', {
     path: '/boats/new',
@@ -88,20 +79,14 @@ Router.map(function(){
     },
     onBeforeAction: function(){
       Session.set('selectedBoat',undefined);
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/boats/new");
-    }
+    }  
   });
   this.route('boatDetails', {
-    path: '/boats/edit',
+    path: '/boats/details',
     template: 'boatDetails',
     waitOn: function(){
       AccountsEntry.signInRequired(this);
       return permSubsList();
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/boats/edit");
     }
   });
   this.route('editBoat', {
@@ -113,9 +98,6 @@ Router.map(function(){
     },
     onBeforeAction: function(){
       Session.set('selectedBoat',this.params._id);
-    },
-    onAfterAction: function(){
-      GAnalytics.pageview("/boats/edit");
     }
   });
   this.route('loginRouting', {
@@ -130,6 +112,6 @@ Router.map(function(){
     }
   });
   this.route('newUserOrientation', {
-
+    
   });
 }); 

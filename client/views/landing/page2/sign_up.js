@@ -22,11 +22,11 @@ var validateEmail = function( email ){
   }
 }
 
-Template.signUpForm.hasErrors = function(){
+Template.landing2signUpForm.hasErrors = function(){
   return Session.get("passwordErrors") || Session.get("emailErrors");
 }
 
-Template.signUpForm.errors = function(){
+Template.landing2signUpForm.errors = function(){
   var msg = "";
   if( Session.get("emailErrors") ){
     msg += Session.get("emailErrors");
@@ -37,11 +37,11 @@ Template.signUpForm.errors = function(){
   return msg;
 }
 
-Template.signUpForm.destroyed = function(){
+Template.landing2signUpForm.destroyed = function(){
   Session.set("passwordErrors", undefined);
 }
 
-Template.signUpForm.events({
+Template.landing2signUpForm.events({
   'click #submit': function(e, template) {
     e.preventDefault();
     var emailErrors = validateEmail( $('#email').val() );
