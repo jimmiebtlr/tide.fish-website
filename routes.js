@@ -1,9 +1,11 @@
 var permSubs = new SubsManager({cacheLimit: 9999, expireIn: 9999}); 
 var tmpSubs = new SubsManager({cacheLimit: 5, expireIn: 3}); 
 
-IronRouterProgress.configure({
-    delay : 100
-});
+if( Meteor.isClient ){
+  IronRouterProgress.configure({
+      delay : 100
+  });
+}
 
 Router.configure({
   layoutTemplate: 'layout',
@@ -19,7 +21,9 @@ var permSubsList = function(){
 };
 
 Router.onBeforeAction('loading');
-Router.onAfterAction( function(){ GAnalytics.pageview(Router.current().path); });
+if( Meteor.isClient ){
+  Router.onAfterAction( function(){ GAnalytics.pageview(Router.current().path); });
+}
 
 Router.onRun(function(){
   Session.set("wrapLayout",true);
@@ -44,7 +48,8 @@ Router.map(function(){
         }
       });
       permSubsList();
-    }
+    },
+    fastRender: true
   });
   this.route('schedule', {
     path: '/schedule',
@@ -111,7 +116,5 @@ Router.map(function(){
       }
     }
   });
-  this.route('newUserOrientation', {
-    
-  });
+  this.route('newUserOrientation', { });
 }); 
