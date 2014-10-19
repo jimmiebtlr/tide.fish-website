@@ -26,3 +26,4 @@ Meteor.publish('Bookings', function(){
 Meteor.publish('User', function(){
   return Meteor.users.find({'_id': this.userId });
 });
+

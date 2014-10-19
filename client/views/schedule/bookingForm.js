@@ -46,7 +46,7 @@ Template.calBookingForm.editDoc = function(){
 AutoForm.addHooks(['calBookingForm'],{
   before: {
     insert: function(doc, template) {
-      doc.boatId = Boats.ambiguous ? Session.get("schedule-editBoat") : Boats.selected()._id;
+      doc.boatId = Boats.ambiguous() ? Session.get("schedule-editBoat") : Boats.selected()._id;
       doc.startDate = new Date(Session.get('vertiCalSelectedDate'));
       doc.endDate = new Date(Session.get('vertiCalSelectedDate'));
       doc.external = true;
