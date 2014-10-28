@@ -1,16 +1,29 @@
 Meteor.startup ->
   if TripLengths.find({}).count() is 0
-    TripLengths.insert label: "1/2 day AM"
-    TripLengths.insert label: "1/2 day PM"
-    TripLengths.insert label: "3/4 day"
-    TripLengths.insert label: "Full day"
-    TripLengths.insert label: "Night"
+    firstHalf    = TripLengths.insert label: "1/2 day AM"
+    secondHalf   = TripLengths.insert label: "1/2 day PM"
+    threeQuarter = TripLengths.insert label: "3/4 day"
+    full         = TripLengths.insert label: "Full day"
+    night        = TripLengths.insert label: "Night"
+  else
+    firstHalf    = TripLengths.findOne( label: "1/2 day AM" )._id
+    secondHalf   = TripLengths.findOne( label: "1/2 day PM" )._id
+    threeQuarter = TripLengths.findOne( label: "3/4 day" )._id
+    full         = TripLengths.findOne( label: "Full day" )._id
+    night        = TripLengths.findOne( label: "Night" )._id
+  if TripLengthConstraints.find().count() is 0
+    TripLengthConstraints.insert( first: firstHalf, second: threeQuarter )
+    TripLengthConstraints.insert( first: firstHalf, second: full )
+    TripLengthConstraints.insert( first: secondHalf, second: threeQuarter)
+    TripLengthConstraints.insert( first: secondHalf, second: full)
+    TripLengthConstraints.insert( first: threeQuarter, second: full)
   if process.env.NODE_ENV is "development"
     if Meteor.users.find().count() is 0
       tripLengths = TripLengths.find().fetch()
 
       console.log "Creating Seed Users"
       captainId = Accounts.createUser( email: "captain@queenanne.com",password: "password1" )
+      console.log( "CaptainId: " + captainId )
       marinaId = Accounts.createUser( email: "joe@themarina.com", password: "password1" )
       marina2Id = Accounts.createUser( email: "susey@themarina.com", password: "password1" )
       firstMateId = Accounts.createUser( email: "firstmate@queenanne.com", password: "password1" )
