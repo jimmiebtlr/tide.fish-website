@@ -37,6 +37,7 @@ Meteor.publish('PublicSchedule',function(id, startDate, endDate){
   var end = moment(endDate );
 
   check( start.diff(end, 'months'), Match.Where( function( diff ){
+    console.log( diff );
     return diff <= 1;
   }));
   
@@ -50,7 +51,6 @@ Meteor.publish('PublicSchedule',function(id, startDate, endDate){
   var calcId = function( date, boatId ){
     return boatId + date.format("MMDDYYYY");
   }
-
 
   var handle = Bookings.find({'boatId': {$in: boatIds}}).observeChanges({
     added: function ( id, doc) {
@@ -73,7 +73,7 @@ Meteor.publish('PublicSchedule',function(id, startDate, endDate){
       }
     }
   });
-
+  
   _.each( boatIds, function( boatId ){
     var boatName = Boats.findOne( boatId ).name;
     for( var date = start.clone(); !date.isAfter(end); date.add(1,'days') ){
