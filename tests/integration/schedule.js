@@ -41,20 +41,36 @@ suite('PublicSchedule - Publish Function',function(){
   });
   test(" - An inserted booking date should send schedule changes", function(done, server, c1,c2) {
     c1.eval( function(){
-      Accounts.createUser({email: Random.id() + "@queenanne.com",password: "password1" }, function(){
-        var schedule = new Mongo.Collection("Schedule");
-        var boatId = Boats.insert({ name: Random.id(), publicPublish: true });
-        Boats.after.update(function(){
+      var schedule = new Mongo.Collection("Schedule");
+      TripLengths.find().observeChanges({
+        added: function(id,doc){
+          console.log( Boats.findOne()._id );
+          console.log( moment().add(1,'days').toDate() );
+          console.log( id );
+          console.log( "Adding Booking" );
+          Bookings.insert({ 
+            boatId: Boats.findOne()._id, 
+            startDate: moment().add(1, 'days').toDate(), 
+            endDate: moment().add(1,'days').toDate(),
+            tripLengthId: id
+          });
+        }
+      });
+      Boats.find().observeChanges({
+        changed: function(id,doc){
           Meteor.subscribe("PublicSchedule", Meteor.userId(), moment().toString(), moment().add(2,'days').toString() );
-        });
-        console.log( "Inserting booking" );
-        console.log( boatId );
-        Bookings.insert({ boatId: boatId, startDate: moment().add(1, 'days').toString(), endDate: moment().add(1,'days').toString()});
-        schedule.find().observeChanges({
-          changed: function(){
-            emit('recordCount', schedule.find().count());
-          }
-        });
+          console.log( "Adding Trip Length" );
+          TripLengths.insert({label: 'Full day'});
+        }
+      });
+      schedule.find().observeChanges({
+        changed: function(){
+          emit('recordCount', schedule.find().count());
+        }
+      });
+      Accounts.createUser({email: Random.id() + "@queenanne.com",password: "password1" }, function(){
+        console.log( "Adding boat" );
+        var boatId = Boats.insert({ name: Random.id(), publicPublish: true });
       });
     }).once('recordCount', function(docs){
       assert.equal(docs, 3);  // 16 since we  add 15 to the start to to calculate end date
