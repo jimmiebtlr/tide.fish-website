@@ -29,17 +29,35 @@ suite('PublicSchedule - Publish Function',function(){
         Boats.find().observeChanges({
           changed: function(){
             Meteor.subscribe("PublicSchedule", Meteor.userId(), moment().toString(), moment().add(1,'days').toString(), function(){
-              if( oneUpdated === false ){
-                oneUpdated = true;
-              }else{
-                emit('recordCount', schedule.find().count());
-              }
+              emit('scheduleChanged', true);
             });
           }
         });
       });
     }).once('recordCount', function(docs){
-      assert.equal(docs, 4);  // 16 since we  add 15 to the start to to calculate end date
+      assert.equal(docs, true);  // 16 since we  add 15 to the start to to calculate end date
+      done();
+    });
+  });
+  test(" - An inserted booking date should send schedule changes", function(done, server, c1,c2) {
+    c1.eval( function(){
+      Accounts.createUser({email: Random.id() + "@queenanne.com",password: "password1" }, function(){
+        var schedule = new Mongo.Collection("Schedule");
+        var boatId = Boats.insert({ name: Random.id(), publicPublish: true });
+        Boats.after.update(function(){
+          Meteor.subscribe("PublicSchedule", Meteor.userId(), moment().toString(), moment().add(2,'days').toString() );
+        });
+        console.log( "Inserting booking" );
+        console.log( boatId );
+        Bookings.insert({ boatId: boatId, startDate: moment().add(1, 'days').toString(), endDate: moment().add(1,'days').toString()});
+        schedule.find().observeChanges({
+          changed: function(){
+            emit('recordCount', schedule.find().count());
+          }
+        });
+      });
+    }).once('recordCount', function(docs){
+      assert.equal(docs, 3);  // 16 since we  add 15 to the start to to calculate end date
       done();
     });
   });

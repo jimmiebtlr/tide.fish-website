@@ -59,6 +59,8 @@ Meteor.publish('PublicSchedule',function(id, startDate, endDate){
       }
     },
     changed: function( id, doc){
+      console.log( id );
+      console.log( doc );
       if( !initializing ){
         console.log( Bookings.findOne(id) );
         console.log( doc );
