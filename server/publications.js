@@ -27,18 +27,19 @@ Meteor.publish('User', function(){
   return Meteor.users.find({'_id': this.userId });
 });
 
-Meteor.publish('PublicSchedule',function(id, startDate, endDate){
+Meteor.publish('PublicSchedule',function(id, week, year){
   var self = this;
   check( id, String );
-  check( startDate, String );
-  check( endDate, String );
-  
-  var start = moment(startDate);
-  var end = moment(endDate );
 
-  check( start.diff(end, 'months'), Match.Where( function( diff ){
-    console.log( diff );
-    return diff <= 1;
+  check( week, Number );
+  check( year, Number );
+  
+  self.week = moment().year( year ).isoWeek( week );
+  self.start = self.week.clone().startOf('isoWeek').isBefore(moment(),'day') ? moment() : self.week.clone().startOf('isoWeek');
+  self.end = self.week.clone().endOf('isoWeek');
+
+  check( self.end.isBefore(moment()), Match.Where( function( past ){
+    return !past;
   }));
   
   var initializing = true;
@@ -52,33 +53,33 @@ Meteor.publish('PublicSchedule',function(id, startDate, endDate){
     return boatId + date.format("MMDDYYYY");
   }
 
-  var handle = Bookings.find({'boatId': {$in: boatIds}}).observeChanges({
-    added: function ( id, doc) {
-      if( !initializing ){
-        self.changed( collectionName, calcId(date,boatId), rec );
-      }
-    },
-    changed: function( id, doc){
-      console.log( id );
-      console.log( doc );
-      if( !initializing ){
-        console.log( Bookings.findOne(id) );
-        console.log( doc );
-        // send change for both old date and new date if not the same
-        var avaliable = _.map(Bookings.avaliable(date,boatId), mapTripLength);
-        self.changed( collectionName, calcId(date,boatId), rec );
-      }
-    },
-    removed: function( id ){
-      if( !initializing ){
-        self.changed( collectionName, calcId(date,boatId), rec );
-      }
+
+  var sendChanges = function ( doc ) {
+    if( !initializing ){
+      for( date = self.start.clone(); !date.isAfter( self.end, 'day' ); date.add(1,'days')){
+        self.changed( 
+          collectionName, 
+          calcId(date.clone(),doc.boatId), {
+          avaliable: _.map(Bookings.avaliable(date.clone(),doc.boatId), mapTripLength) 
+        });
+      };
     }
+  };
+
+  var handle = Bookings.find({'boatId': {$in: boatIds}}, {'startDate': {$gte: self.start}}, {'endDate': {$lte: self.end}}).observe({
+    added: sendChanges,
+    changed: function( old, current ){
+      sendChanges( current );
+      if( old.startDate !== current.startDate || old.endDate !== current.endDate ){
+        sendChanges( old );
+      }
+    },
+    removed: sendChanges
   });
   
   _.each( boatIds, function( boatId ){
     var boatName = Boats.findOne( boatId ).name;
-    for( var date = start.clone(); !date.isAfter(end); date.add(1,'days') ){
+    for( var date = self.start.clone(); !date.isAfter(self.end,'day'); date.add(1,'days') ){
       var avaliable = _.map(Bookings.avaliable(date,boatId), mapTripLength);
       var schedule = {
         boatId: boatId,
