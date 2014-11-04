@@ -58,7 +58,7 @@ Template.signUpForm.events({
       Router.go( AccountsEntry.settings.dashboardRoute );
       GAnalytics.event("account","signup");
     }else{
-      GAnalytics.event("account","signup-failed");
+      GAnalytics.event("account","signup-failed", emailErrors.toString, "PasswordErrors" + passwordErrors.length);
     }
   }
 });
