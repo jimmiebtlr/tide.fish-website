@@ -1,6 +1,6 @@
 Meteor.startup(function () {
   AccountsEntry.config({
-    logo: 'https://fish-booking-core.s3-us-west-2.amazonaws.com/logo.png',    
+    logo: 'https://tidefish-core.s3-us-west-2.amazonaws.com/logo.png',    
     //privacyUrl: '/privacy-policy'     // if set adds link to privacy policy and 'you agree to ...' on sign-up page
     //termsUrl: '/terms-of-use'         // if set adds link to terms  'you agree to ...' on sign-up page
     homeRoute: '/',                    // mandatory - path to redirect to after sign-out
