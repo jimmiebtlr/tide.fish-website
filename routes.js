@@ -67,6 +67,14 @@ Router.map(function(){
       return permSubsList();
     }  
   });
+  this.route('profile', {
+    path: '/profile',
+    template: 'profile',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    }  
+  });
   this.route('boats', {
     path: '/boats',
     template: 'boats',

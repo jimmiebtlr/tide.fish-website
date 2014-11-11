@@ -26,5 +26,12 @@
   {{else}}
     <li><a href="{{pathFor 'schedule'}}"><i class="fa fa-calendar-o">&nbsp;Schedule</i></a></li>
   {{/if}}
+</template>
 
+<template name="navProfileLink">
+  {{#if currentUser}}
+    <li>
+      <a href="{{pathFor 'profile'}}"><i class="fa fa-wrench">&nbsp;Profile</i></a>
+    </li>
+  {{/if}}
 </template>

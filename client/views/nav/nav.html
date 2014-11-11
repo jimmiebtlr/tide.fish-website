@@ -1,0 +1,40 @@
+<template name="nav">
+  <div class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Tide.Fish</a>
+      </div>
+      {{#unless isDisconnected}}
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            {{#if currentUser}}
+              {{> boatMenu}}
+              {{> navScheduleLink}}
+              {{> navSharingLink}}
+              {{> navBoatDetailsLink}}
+            {{/if}}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {{> navProfileLink}}
+            
+            {{#if currentUser}}
+              {{#unless isDisconnected}}
+                <li>{{> notifyIcon}}</li>
+              {{/unless}}
+              <li><a href="/sign-out">Sign Out</a></li>
+            {{else}}
+              <li><a href="/sign-in">Sign In</a></li>
+              <li><a href="/sign-up">Sign Up</a></li>
+            {{/if}}
+          </ul>
+        </div><!--/.nav-collapse -->
+      {{/unless}}
+    </div>
+  </div>
+</template>
