@@ -1,3 +1,4 @@
+###
 describe "Aggregate Publication", ->
   beforeEach ->
     MeteorStubs.install()
@@ -64,4 +65,4 @@ describe "Aggregate Publication", ->
     return
 
   return
-
+###

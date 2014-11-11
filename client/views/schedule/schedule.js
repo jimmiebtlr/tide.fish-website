@@ -14,13 +14,36 @@ Template.scheduleDetails.dateFuture = futureSelected;
 /*
  * Boat Line Item
  */
-Template.scheduleBoatLineItem.newForm = function(){ 
-  console.log( Boats.ambiguous() );
-  console.log( Session.get("schedule-editBoat") );
-  console.log( Session.get("schedule-editBooking") );
-  console.log( ((Session.get("schedule-editBoat") === this._id && undefined === Session.get("schedule-editBooking")) || !Boats.ambiguous()) && futureSelected()  );
+Template.scheduleBoatLineItem.newForm = function(){
+  /*
+   * If This boat set
+   *  and booking not set or not set to today
+   * or not ambiguous
+   * and future selected
+   */
+  var bookingNotSelected = function(id){
+      return (
+          Session.get("schedule-editBooking") === undefined ||
+          !(
+            Bookings.findOne(Session.get("schedule-editBooking")) && 
+            moment(
+              Bookings.findOne(Session.get("schedule-editBooking")).startDate
+            ).isSame( 
+              moment(Session.get('vertiCalSelectedDate')), 'day' 
+            )
+          )
+        );
+  };
+  console.log( bookingNotSelected() );
 
-  return ((Session.get("schedule-editBoat") === this._id && undefined === Session.get("schedule-editBooking")) || !Boats.ambiguous()) && futureSelected(); 
+  return (bookingNotSelected() && 
+          futureSelected() &&
+          (
+            Session.get("schedule-editBoat") === this._id ||
+            !Boats.ambiguous()
+          )
+        );
+
 }
 
 Template.scheduleBoatLineItem.dateFuture = futureSelected;
