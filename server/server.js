@@ -7,7 +7,6 @@ if(  process.env.NODE_ENV === "production" ){
 }
 
 Meteor.startup(function(){
-  //console.log( Meteor.users.find({}).fetch() );
   Accounts.config({sendVerificationEmail: true, forbidClientAccountCreation: false});
 });
 

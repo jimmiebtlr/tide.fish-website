@@ -61,3 +61,22 @@ Template.boatFormRemove.events({
     }
   }
 });
+
+Template.boatSchedulePublish.helpers({
+  publishedClass: function(){
+    return Boats.selected().publicPublish ? "active btn-primary" : "btn-default";
+  },
+  notPublishedClass: function(){
+    return !Boats.selected().publicPublish ? "active btn-primary" : "btn-default";
+  },
+  publishedText: function(){
+    return Boats.selected().publicPublish ? "Published" : "Not Published";
+  }
+});
+
+Template.boatSchedulePublish.events({
+  'click .btn-toggle': function(){
+    var boat = Boats.selected();
+    Boats.update( {'_id': boat._id}, {$set: {publicPublish: !boat.publicPublish}} );
+  }
+});
