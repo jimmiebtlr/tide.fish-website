@@ -20,13 +20,12 @@
               {{> navBoatDetailsLink}}
             {{/if}}
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            {{> navProfileLink}}
-            
+          <ul class="nav navbar-nav navbar-right"> 
             {{#if currentUser}}
               {{#unless isDisconnected}}
                 <li>{{> notifyIcon}}</li>
               {{/unless}}
+              {{> navProfileLink}}
               <li><a href="/sign-out">Sign Out</a></li>
             {{else}}
               <li><a href="/sign-in">Sign In</a></li>

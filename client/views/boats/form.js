@@ -5,15 +5,15 @@ Template.boatDetails.owned = function(){
   return false;
 }
 
-Template.boatForm.editDoc = Boats.selected;
+Template.boatForm.editDoc = Boats.editing;
 
 Template.boatForm.disabled = function(){ 
   return Template.boatForm.formMode() === "readonly" ? "disabled" : "";
 }
 
 Template.boatForm.title = function(){
-  if( Boats.selected() ){
-    if( Boats.selected().ownerId !== Meteor.userId() ){
+  if( Boats.editing() ){
+    if( Boats.editing().ownerId !== Meteor.userId() ){
       return "Showing Boat";
     }else{
       return "Update Boat";
@@ -24,8 +24,8 @@ Template.boatForm.title = function(){
 }
 
 Template.boatForm.formMode = function(){ 
-  if( Boats.selected() ){
-    if( Boats.selected().ownerId !== Meteor.userId() ){
+  if( Boats.editing() ){
+    if( Boats.editing().ownerId !== Meteor.userId() ){
       return "readonly";
     }else{
       return "update";
