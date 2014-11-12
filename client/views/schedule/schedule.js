@@ -34,7 +34,6 @@ Template.scheduleBoatLineItem.newForm = function(){
           )
         );
   };
-  console.log( bookingNotSelected() );
 
   return (bookingNotSelected() && 
           futureSelected() &&

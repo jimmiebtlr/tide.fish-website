@@ -2,6 +2,7 @@
   {{> landingSplash}}
 
   <div id="container-fluid">
+    {{> featuretteWidget}}
     {{> featurette1}}
     {{> featurette2}}
     {{> featurette3}}
@@ -29,6 +30,20 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="featuretteWidget">
+  <div id="featurette-widget" class="featurette">
+    <div class="container">
+      <div class='col-md-5'>
+        <h2 class="featurette-heading">Add a widget with your schedule.</h2>
+        <p class="lead">Easily share your schedule with customers.</p>
+      </div>
+      <div class="col-md-7">
+        <img class="img-responsive" src="https://tidefish-core.s3-us-west-2.amazonaws.com/widget.png" alt="widget">
       </div>
     </div>
   </div>
