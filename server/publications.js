@@ -1,3 +1,5 @@
+Publications = {};
+
 Meteor.publish('TripLengths', function(){
   return TripLengths.find({});
 });
@@ -27,7 +29,7 @@ Meteor.publish('User', function(){
   return Meteor.users.find({'_id': this.userId });
 });
 
-Meteor.publish('PublicSchedule',function(id, week, year){
+Publications.PublicSchedule = function(id, week, year){
   var self = this;
   check( id, String );
 
@@ -66,7 +68,7 @@ Meteor.publish('PublicSchedule',function(id, week, year){
     }
   };
 
-  var handle = Bookings.find({'boatId': {$in: boatIds}}, {'startDate': {$gte: self.start}}, {'endDate': {$lte: self.end}}).observe({
+  var observeFuncs = {
     added: sendChanges,
     changed: function( old, current ){
       sendChanges( current );
@@ -75,7 +77,13 @@ Meteor.publish('PublicSchedule',function(id, week, year){
       }
     },
     removed: sendChanges
-  });
+  };
+
+  var handle = Bookings.find(
+      {'boatId': {$in: boatIds}}, 
+      {'startDate': {$gte: self.start}}, 
+      {'endDate': {$lte: self.end}}
+  ).observe( observeFuncs );
   
   _.each( boatIds, function( boatId ){
     var boatName = Boats.findOne( boatId ).name;
@@ -97,4 +105,6 @@ Meteor.publish('PublicSchedule',function(id, week, year){
   self.onStop(function () {
     handle.stop();
   });
-});
+};
+
+Meteor.publish('PublicSchedule', Publications.PublicSchedule );

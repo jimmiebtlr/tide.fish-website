@@ -67,6 +67,14 @@ Router.map(function(){
       return permSubsList();
     }  
   });
+  this.route('profile', {
+    path: '/profile',
+    template: 'profile',
+    waitOn: function(){
+      AccountsEntry.signInRequired(this);
+      return permSubsList();
+    }  
+  });
   this.route('boats', {
     path: '/boats',
     template: 'boats',
@@ -83,7 +91,7 @@ Router.map(function(){
       return permSubsList();
     },
     onBeforeAction: function(){
-      Session.set('selectedBoat',undefined);
+      Boats.setEditing( undefined );
     }  
   });
   this.route('boatDetails', {
@@ -92,6 +100,9 @@ Router.map(function(){
     waitOn: function(){
       AccountsEntry.signInRequired(this);
       return permSubsList();
+    },
+    onBeforeAction: function(){
+      Boats.setEditing(Boats.selected());
     }
   });
   this.route('editBoat', {
@@ -102,7 +113,7 @@ Router.map(function(){
       return permSubsList();
     },
     onBeforeAction: function(){
-      Session.set('selectedBoat',this.params._id);
+      Boats.setEditing(this.params._id);
     }
   });
   this.route('loginRouting', {

@@ -1,8 +1,7 @@
 <template name="boatDetails">
   <div class="col-md-offset-2 col-md-8">
     {{> boatForm}}
-  </div>
-  <div class="col-md-offset-2 col-md-8">
+    {{> boatSchedulePublish }}
     {{#if owned }}
       {{> boatFormRemove}}
     {{/if}}
@@ -24,6 +23,25 @@
       {{/autoForm}}
     </div>
   </div>
+</template>
+
+<template name="boatSchedulePublish">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Publish Boat Schedule
+    </div>
+    <div class="panel-body">
+      <p class="muted">
+        This allows your boat to be displayed via widget.  Publishes what time slots you have avaliable on a future date.
+      </p>
+      <div class="btn-group btn-toggle"> 
+        <button class="btn {{ notPublishedClass }}">Off</button>
+        <button class="btn {{ publishedClass }}">On</button>
+      </div>
+      &nbsp;{{ publishedText }}
+    </div>
+  </div>
+  
 </template>
 
 <template name="boatFormRemove">
