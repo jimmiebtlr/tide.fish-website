@@ -53,6 +53,21 @@ AutoForm.addHooks(['boatForm'],{
   }
 });
 
+Template.boatTimeSlots.helpers({
+  tripLengths: function(){
+    return TripLengths.find();
+  }
+});
+
+Template.boatSchedulePublish.helpers({
+  notAllowed: function(){
+    console.log( this );
+  },
+  allowed: function(){
+    console.log( this );
+  }
+});
+
 Template.boatFormRemove.events({
   'click .remove': function(){
     if( confirm("Are you sure you would like to permenantly delete this boat?") ){

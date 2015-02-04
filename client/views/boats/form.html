@@ -40,8 +40,27 @@
       </div>
       &nbsp;{{ publishedText }}
     </div>
+  </div> 
+</template>
+
+<template name="boatTimeSlots">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Allowed Time Slots
+    </div>
+    <div class="panel-body">
+      {{#each TripLength}}
+        {{> boatTripLengthToggle}}
+      {{/each}}
+    </div>
+  </div> 
+</template>
+
+<template name="boatTripLengthToggle">
+  <div class="btn-group btn-toggle"> 
+    <button class="btn {{ notAllowed }}">Off</button>
+    <button class="btn {{ allowed }}">On</button>
   </div>
-  
 </template>
 
 <template name="boatFormRemove">
