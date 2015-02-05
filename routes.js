@@ -36,6 +36,7 @@ Router.map(function(){
   this.route('home', {
     path: '/',
     template: 'home',
+    layoutTemplate: 'homeLayout',
     onAfterAction: function() {
       SEO.set({
         title: "Tide.Fish - Cloud Booking for Charter Fishing",

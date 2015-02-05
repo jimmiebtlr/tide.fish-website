@@ -32,6 +32,7 @@ email@1.0.3
 facebook@1.1.0
 fastclick@1.0.0
 follower-livedata@1.0.1
+gentlenode:spiderable-ssl@0.1.8
 geojson-utils@1.0.0
 google@1.1.0
 handlebars@1.0.0
@@ -90,7 +91,6 @@ session@1.0.2
 sha@1.0.0
 spacebars-compiler@1.0.2
 spacebars@1.0.2
-spiderable@1.0.3
 splendido:accounts-emails-field@1.0.3
 srp@1.0.0
 standard-app-packages@1.0.2

@@ -8,6 +8,24 @@
 <body>
 </body>
 
+<template name="homeLayout">
+  {{> nav}}
+
+  {{#unless withoutWrapper}}
+    <div class="container">
+      <div id="content">
+        <div class="row">
+          {{> yield}}
+        </div>
+      </div>
+    </div>
+  {{else}}
+    {{> yield}}
+  {{/unless}}
+
+  {{> footer}}
+</template>
+
 <template name="layout">
   {{#unless hideNav}}
     {{> nav}}

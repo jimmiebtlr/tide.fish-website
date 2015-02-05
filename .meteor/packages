@@ -5,7 +5,6 @@ accounts-base
 accounts-password
 accounts-ui
 appcache
-spiderable
 coffeescript
 djedi:sanitize-html
 matb33:collection-hooks
@@ -31,4 +30,5 @@ jimmiebtlr:notifications@0.0.2-rc.1
 mrt:moment
 anti:fake
 percolatestudio:percolatestudio-migrations
+gentlenode:spiderable-ssl
 
